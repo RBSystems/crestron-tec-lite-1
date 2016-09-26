@@ -14,3 +14,6 @@ src/TPCS/*.ush
 src/RMC3/BSS London Crestron/*.ush
 src/TPCS/BSS London Crestron/*.ush
 src/FT/BSS London Crestron/*.ush
+*.rej
+*.patch
+patchLog.txt
