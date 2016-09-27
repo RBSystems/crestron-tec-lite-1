@@ -63,9 +63,9 @@ Function Up()
 	INTEGER x;
 	Print("!!!!UP!!!!");
 	//for (x=1 to OVERAGE){
-		Program_Volume_Up = 1;
+		Display_Volume_Up = 1;
 		Delay(10);
-		Program_Volume_Up = 0;
+		Display_Volume_Up = 0;
 	//}
 	Current_Volume = Current_Volume + (Scale_Factor / 2);
 	//Current_Volume = Current_Volume + Scale_Factor;
@@ -77,9 +77,9 @@ Function Down()
 	INTEGER x;
 	Print("?????DOWN?????");
 	//for (x=1 to OVERAGE){
-		Program_Volume_Down = 1;
+		Display_Volume_Down = 1;
 		Delay(10);
-		Program_Volume_Down = 0;
+		Display_Volume_Down = 0;
 	//}
 	Current_Volume = Current_Volume - (Scale_Factor / 2);
 	//Current_Volume = Current_Volume - Scale_Factor;
