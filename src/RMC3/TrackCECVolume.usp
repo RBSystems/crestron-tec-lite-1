@@ -22,6 +22,7 @@ Comments: Track Volume when dealing with a CEC display
 #DEFINE_CONSTANT	MINVOLUME	0
 #DEFAULT_VOLATILE
 #ENABLE_STACK_CHECKING
+#ENABLE_TRACE
 #PRINT_TO_TRACE
 
 
@@ -55,22 +56,25 @@ INTEGER Current_Volume,Track_Manually,Scale_Factor,Goal,Volume_at_slider_press,W
 Function ResetVolume()
 {
     Current_Volume = 0;
+	Print("Setting volume to %d",Current_Volume);
 	_Volume = Current_Volume;
 }
 
 Function Up(integer adjustVolumeValue)
 {
-	INTEGER x;		
+	INTEGER x;
 	Display_Volume_Up = 1;
 	Delay(10);
 	Display_Volume_Up = 0;
 
 	if (adjustVolumeValue = 1){
+		Print("Adjusting volume value via Up() function\n");
 		Current_Volume = Current_Volume + (Scale_Factor / 2);
 		//Current_Volume = Current_Volume + Scale_Factor;
 		_Volume = Current_Volume;
 	}
 	else {
+		Print("Adjusting volume value outside of Up()\n");
      	// Do nothing
 	}
 }
@@ -83,11 +87,13 @@ Function Down(integer adjustVolumeValue)
 	Display_Volume_Down = 0;
     
 	if (adjustVolumeValue = 1){
+		Print("Adjusting volume value via Down() function\n");
 		Current_Volume = Current_Volume - (Scale_Factor / 2);
 		//Current_Volume = Current_Volume - Scale_Factor;
 		_Volume = Current_Volume;
 	}
 	else {
+		Print("Adjusting volume value outside of Down()\n");
 		// Do nothing
 	}
 }
@@ -120,13 +126,18 @@ RELEASE Volume_Up
 {
 	INTEGER c,diff,compareVal;
 	compareVal = BIGGESTSIZE - Scale_Factor;
+	Print("Current_Volume: %d",Current_Volume);
 	if ( Current_Volume >= compareVal )
 	{
+		Print("Current_Volume >= compareVal, Defaulting to BIGGESTSIZE");
 		c = BIGGESTSIZE;
 	}
 	else {
+		Print("Current_Volume NOT >= compareVal, Non-default operation");
 		c = Current_Volume + Scale_Factor;
 	}
+	Print("compareVal: %d\n",compareVal);
+	Print("c: %d \n",c);
 
 	if(Track_Manually = 1){
     	Current_Volume = c;
@@ -139,13 +150,19 @@ RELEASE Volume_Down
 {
 	INTEGER c,diff,compareVal;
 	compareVal = MINVOLUME + Scale_Factor;
+	Print("Current_Volume: %d",Current_Volume);
 	if ( Current_Volume <= compareVal ) {
+		Print("Current_Volume <= compareVal, Defaulting to MINVOLUME");
 		c = MINVOLUME;
 	}
 	else {
+		Print("Current_Volume NOT <= compareVal, Non-default operation");
 		c = Current_Volume - Scale_Factor;
 	}
-	
+
+	Print("compareVal: %d\n",compareVal);
+	Print("c: %d \n",c);
+
 	if(Track_Manually = 1){
 		Current_Volume = Current_Volume - Scale_Factor;
 		_Volume = Current_Volume;
