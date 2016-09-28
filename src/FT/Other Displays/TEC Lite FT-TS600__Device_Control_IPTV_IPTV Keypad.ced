@@ -13,7 +13,7 @@ Hint=IPTV Keypad (Smart Object ID=42)
 Code=3
 SGControlType=Simple Keypad
 SGControlName=IPTV Keypad
-GUID=C5FD1B4B-3872-4CEE-8E32-7D2B58D37BBD
+GUID=A68168F6-56C7-4B69-8014-5A0D4742F005
 SmplCName=TEC Lite FT-TS600__Device_Control_IPTV_IPTV Keypad.ced
 SMWRev=4.02.19
 Expand=expand_random
