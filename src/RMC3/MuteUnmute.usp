@@ -20,12 +20,15 @@ Comments: Handle Mute logic for the RMC3
 #DEFINE_CONSTANT	LOWESTSIZE 0
 #DEFAULT_VOLATILE
 #ENABLE_STACK_CHECKING
+#ENABLE_TRACE
+#PRINT_TO_TRACE
+
 
 /*******************************************************************************************
   DIGITAL_INPUT, ANALOG_INPUT, STRING_INPUT, BUFFER_INPUT inputs and DIGITAL_OUTPUT,
   ANALOG_OUTPUT, STRING_OUTPUT and SERIAL_OUTPUT outputs
 *******************************************************************************************/
-DIGITAL_INPUT Mute_Off,Mute_On,Mute_Toggle;
+DIGITAL_INPUT Enable,Mute_Off,Mute_On,Mute_Toggle;
 ANALOG_INPUT Vol_fb;
 
 DIGITAL_OUTPUT Mute_Off_fb,Mute_On_fb;
@@ -37,7 +40,7 @@ ANALOG_OUTPUT Vol;
   Note:  Be sure to initialize all declared STRING variables as needed
          For example, in Function Main: myString = "";
 *******************************************************************************************/
-INTEGER Current_Volume, Muted;
+INTEGER Enabled, Current_Volume, Muted;
 
 /*******************************************************************************************
   Functions
@@ -46,22 +49,28 @@ INTEGER Current_Volume, Muted;
          the code that calls them.
 *******************************************************************************************/
 FUNCTION ResetValues(){
-	Mute_Off_fb = 0;
-	Mute_On_fb = 0;
+	if(Enabled = 1){
+		Mute_Off_fb = 0;
+		Mute_On_fb = 0;
+	}
 }
 
 FUNCTION MUTE(){
-	ResetValues();
-	Muted = 1;
-	Mute_On_fb = 1;
-	Current_Volume = 0;
+	if(Enabled = 1){
+		ResetValues();
+		Muted = 1;
+		Mute_On_fb = 1;
+		Current_Volume = 0;
+	}
 }
 
 FUNCTION UNMUTE(){	
-	ResetValues();
-	Mute_Off_fb = 1;
-	Muted = 0;
-	Current_Volume = 0;
+	if(Enabled = 1){
+		ResetValues();
+		Mute_Off_fb = 1;
+		Muted = 0;
+		Current_Volume = 0;
+	}
 }
 
 
@@ -69,32 +78,45 @@ FUNCTION UNMUTE(){
   Event Handlers
   (Uncomment and declare additional event handlers as needed)
 *******************************************************************************************/
+CHANGE Enable
+{
+	Enabled = Enable;
+}
+
 RELEASE Mute_On
-{	
-	MUTE();
+{
+	if(Enabled = 1){
+		MUTE();
+	}
 }
 
 
 RELEASE Mute_Off
 {
-	UNMUTE();
+	if(Enabled = 1){
+		UNMUTE();
+	}
 }
 
 RELEASE Mute_Toggle
 {
-	if( Muted = 0 )
-	{
-		MUTE();	
-	}
-	else
-	{
-		UNMUTE();
+	if(Enabled = 1){
+		if( Muted = 0 )
+		{
+			MUTE();	
+		}
+		else
+		{
+			UNMUTE();
+		}
 	}
 }
 
 CHANGE Vol_fb
 {
-  Current_Volume = Vol_fb;
+	if(Enabled = 1){
+		Current_Volume = Vol_fb;
+	}
 }
 
 /*******************************************************************************************
@@ -105,6 +127,7 @@ CHANGE Vol_fb
 
 Function Main()
 {
+	Enabled = 0;
 	Current_Volume = 0;
 	Muted = 0;
 	WaitForInitializationComplete();

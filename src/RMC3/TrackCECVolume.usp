@@ -4,8 +4,8 @@
 *******************************************************************************************/
 /*
 Dealer Name: Brigham Young University
-System Name: Metrics Proxy
-System Number: 1.0.0
+System Name: Track CEC Volume
+System Number: 1.6
 Programmer: Dan Clegg
 Comments: Track Volume when dealing with a CEC display
 */
@@ -16,12 +16,12 @@ Comments: Track Volume when dealing with a CEC display
 *******************************************************************************************/
 #SYMBOL_NAME "Track CEC Volume"
 #CATEGORY "46" "Volume"
-#DEFINE_CONSTANT	BIGGESTSIZE	65534
 #DEFINE_CONSTANT	OVERAGE	2
 #DEFINE_CONSTANT	MAXVOLUME	100
 #DEFINE_CONSTANT	MINVOLUME	0
 #DEFAULT_VOLATILE
 #ENABLE_STACK_CHECKING
+
 #ENABLE_TRACE
 #PRINT_TO_TRACE
 
@@ -30,13 +30,13 @@ Comments: Track Volume when dealing with a CEC display
   DIGITAL_INPUT, ANALOG_INPUT, STRING_INPUT, BUFFER_INPUT inputs and DIGITAL_OUTPUT, 
   ANALOG_OUTPUT, STRING_OUTPUT and SERIAL_OUTPUT outputs
 *******************************************************************************************/
-DIGITAL_INPUT Display_Is_CEC,Volume_Up,Volume_Down,Slider_Press,Reset_Volume;
+DIGITAL_INPUT Display_Is_CEC, Display_Is_Blank,Input_Press,Volume_Up,Volume_Down,Slider_Press,Reset_Volume;
 
-ANALOG_INPUT Volume;
+ANALOG_INPUT Slider_Set_Volume_Value,Display_Volume_Value,Volume_fb_Value;
 
 DIGITAL_OUTPUT Display_Volume_Up,Display_Volume_Down;
 
-ANALOG_OUTPUT _Volume;
+ANALOG_OUTPUT _Volume,_skip_,_skip_,_skip_,_skip_,Reset_Slider_Set_Volume_Value,Reset_Display_Volume_Value,Reset_Volume_fb_Value;
 /*******************************************************************************************
   Global Variables
   (Uncomment and declare global variables as needed)
@@ -44,7 +44,7 @@ ANALOG_OUTPUT _Volume;
          For example, in Function Main: myString = "";
 *******************************************************************************************/
 
-INTEGER Current_Volume,Track_Manually,Scale_Factor,Goal,Volume_at_slider_press,Wait_For_Slider_Release;
+INTEGER BIGGESTSIZE,Current_Volume,Track_Manually,Scale_Factor,Goal,Volume_at_slider_press,Wait_For_Slider_Release;
 
 /*******************************************************************************************
   Functions
@@ -58,18 +58,24 @@ Function ResetVolume()
     Current_Volume = 0;
 	Print("Setting volume to %d",Current_Volume);
 	_Volume = Current_Volume;
+	Reset_Slider_Set_Volume_Value = Current_Volume;
+	Reset_Display_Volume_Value = Current_Volume;
+	Reset_Volume_fb_Value = Current_Volume;
 }
 
 Function Up(integer adjustVolumeValue)
 {
 	INTEGER x;
+	Print("Sending Display_Volume_Up = 1");
 	Display_Volume_Up = 1;
 	Delay(10);
+	Print("Sending Display_Volume_Up = 0");
 	Display_Volume_Up = 0;
 
 	if (adjustVolumeValue = 1){
 		Print("Adjusting volume value via Up() function\n");
-		Current_Volume = Current_Volume + (Scale_Factor / 2);
+		Current_Volume = Current_Volume + (Scale_Factor S/ 2); // S/ is a signed int division (see help on integers)
+		Print("Function: Current_Volume = Current_Volume + (Scale_Factor / 2); Current_Volume: %d",Current_Volume);
 		//Current_Volume = Current_Volume + Scale_Factor;
 		_Volume = Current_Volume;
 	}
@@ -88,7 +94,8 @@ Function Down(integer adjustVolumeValue)
     
 	if (adjustVolumeValue = 1){
 		Print("Adjusting volume value via Down() function\n");
-		Current_Volume = Current_Volume - (Scale_Factor / 2);
+		Current_Volume = Current_Volume - (Scale_Factor S/ 2); // S/ is a signed int division (see help on integers)
+		Print("Function: Current_Volume = Current_Volume - (Scale_Factor / 2); Current_Volume: %d",Current_Volume);
 		//Current_Volume = Current_Volume - Scale_Factor;
 		_Volume = Current_Volume;
 	}
@@ -102,6 +109,16 @@ Function Down(integer adjustVolumeValue)
   Event Handlers
   (Uncomment and declare additional event handlers as needed)
 *******************************************************************************************/
+
+PUSH Display_Is_Blank
+{
+	_Volume = MINVOLUME;
+}
+
+RELEASE Input_Press
+{
+	ResetVolume();
+}
 
 PUSH Display_Is_CEC
 {
@@ -125,9 +142,9 @@ RELEASE Reset_Volume
 RELEASE Volume_Up
 {
 	INTEGER c,diff,compareVal;
-	compareVal = BIGGESTSIZE - Scale_Factor;
+	compareVal = BIGGESTSIZE - Scale_Factor; // The absolute max we'll allow a normal Up operation to occur
 	Print("Current_Volume: %d",Current_Volume);
-	if ( Current_Volume >= compareVal )
+	if ( Current_Volume S>= compareVal || Current_Volume = BIGGESTSIZE ) // S>= is a signed int operation (see help on integers)
 	{
 		Print("Current_Volume >= compareVal, Defaulting to BIGGESTSIZE");
 		c = BIGGESTSIZE;
@@ -140,6 +157,7 @@ RELEASE Volume_Up
 	Print("c: %d \n",c);
 
 	if(Track_Manually = 1){
+		Print("Current_Volume: %d, c: %d", Current_Volume, c);
     	Current_Volume = c;
 		_Volume = Current_Volume;
 		Up(0);
@@ -149,9 +167,9 @@ RELEASE Volume_Up
 RELEASE Volume_Down
 {
 	INTEGER c,diff,compareVal;
-	compareVal = MINVOLUME + Scale_Factor;
+	compareVal = MINVOLUME + Scale_Factor; // The absolute value where we'll allow a Down operation to occur
 	Print("Current_Volume: %d",Current_Volume);
-	if ( Current_Volume <= compareVal ) {
+	if ( Current_Volume S<= compareVal || Current_Volume = MINVOLUME || Current_Volume S<= Scale_Factor ) { // S<= is a signed int operation (see help on integers)
 		Print("Current_Volume <= compareVal, Defaulting to MINVOLUME");
 		c = MINVOLUME;
 	}
@@ -164,7 +182,8 @@ RELEASE Volume_Down
 	Print("c: %d \n",c);
 
 	if(Track_Manually = 1){
-		Current_Volume = Current_Volume - Scale_Factor;
+		Print("Current_Volume: %d, c: %d", Current_Volume, c);
+		Current_Volume = c;
 		_Volume = Current_Volume;
 		Down(0);
 	}
@@ -173,7 +192,7 @@ RELEASE Volume_Down
 PUSH Slider_Press
 {
 	If (Wait_For_Slider_Release = 0){
-		Volume_at_slider_press = Volume;
+		Volume_at_slider_press = Slider_Set_Volume_Value;
 		Wait_For_Slider_Release = 1;
 	}
 }
@@ -181,7 +200,7 @@ PUSH Slider_Press
 RELEASE Slider_Press
 {
 	INTEGER Desired_Volume,steps,x;
-	Desired_Volume = Volume;
+	Desired_Volume = Slider_Set_Volume_Value;
 	//PRINT("*************");
 	
 	//Print("*************");
@@ -191,9 +210,10 @@ RELEASE Slider_Press
 	Print("*** Desired_Volume: %d",Desired_Volume);
 	//Print("*** Volume at slider press: %d", Volume_at_slider_press);
     if ( Track_Manually = 1){
-		if ( Desired_Volume < Volume_at_slider_press) {
+		if ( Desired_Volume S< Volume_at_slider_press) { // S< is a signed int operation (see help on integers)
 			// It seems that we're executing 2.1 - 2.8 times more presses than we should be, hence OVERAGE
-			steps = (Volume_at_slider_press - Desired_Volume) / Scale_Factor / OVERAGE;
+			//steps = (Volume_at_slider_press - Desired_Volume) S/ Scale_Factor S/ OVERAGE; // S/ is a signed int operation (see help on integers)
+			steps = ( Volume_at_slider_press - Desired_Volume ) S/ Scale_Factor;
 			//Print("*** Steps Down: %d",steps);
 			for (x = 1 to steps)
 			{
@@ -202,7 +222,8 @@ RELEASE Slider_Press
 		}
 		else if ( Desired_Volume > Volume_at_slider_press) {
 			// It seems that we're executing 2.1 - 2.8 times more presses than we should be, hence OVERAGE
-			steps = (Desired_Volume - Volume_at_slider_press) / Scale_Factor / OVERAGE;
+			//steps = (Desired_Volume - Volume_at_slider_press) S/ Scale_Factor S/ OVERAGE; // S/ is a signed int operation (see help on integers)
+			steps = (Desired_Volume - Volume_at_slider_press) S/ Scale_Factor;
 			//Print("*** Steps Up: %d",steps);
 			for (x = 1 to steps)
 			{
@@ -214,11 +235,20 @@ RELEASE Slider_Press
 		}
 	}
 	Wait_For_Slider_Release = 0;	
+	Print("Function: Slider_Set_Volume_Value, Goal: %d", Goal);
 }
 
-CHANGE Volume
+CHANGE Slider_Set_Volume_Value
 {
-	Goal = Volume;
+	Goal = Slider_Set_Volume_Value;
+	Print("Function: CHANGE Slider_Set_Volume_Value, Goal: %d", Goal);
+}
+
+CHANGE Volume_fb_Value
+{
+	Current_Volume = Volume_fb_Value;
+	Print("Function: CHANGE Volume_fb_Value, Volume_fb_Value: %d", Volume_fb_Value);
+	Print("Function: CHANGE Volume_fb_Value, Current_Volume: %d", Current_Volume);
 }
 
 /*******************************************************************************************
@@ -229,11 +259,23 @@ CHANGE Volume
 
 Function Main()
 {
+	BIGGESTSIZE = 65534;
 	Current_Volume = 0;
 	Track_Manually = 0;
-	Scale_Factor = BIGGESTSIZE / MAXVOLUME;
+	Scale_Factor = BIGGESTSIZE S/ MAXVOLUME;
 	Goal = 0;
 	Wait_For_Slider_Release = 0;
+
+	Print("Current_Volume: %d", Current_Volume);
+	Print("BIGGESTSIZE: %d", BIGGESTSIZE);
+	Print("MAXVOLUME: %d", MAXVOLUME);
+	Print("MINVOLUME: %d", MINVOLUME);
+	Print("Track_Manually: %d", Track_Manually);
+	Print("Scale_Factor: %d", Scale_Factor);
+	Print("Goal: %d", Goal);
+	Print("Wait_For_Slider_Release: %d", Wait_For_Slider_Release);
+
+	
 
 	WaitForInitializationComplete();
 }
