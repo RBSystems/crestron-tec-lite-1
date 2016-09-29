@@ -29,7 +29,7 @@ Comments: Forwards Metrics Events
   DIGITAL_INPUT, ANALOG_INPUT, STRING_INPUT, BUFFER_INPUT inputs and DIGITAL_OUTPUT, 
   ANALOG_OUTPUT, STRING_OUTPUT and SERIAL_OUTPUT outputs
 *******************************************************************************************/
-DIGITAL_INPUT Startup_press,Confirm_System_Off,Program_Volume_Down,Program_Volume_Up,Select_AV_Jack,Select_Blank,Select_BluRay,Select_Device_Control_Bluray,Select_Device_Control_IPTV,Select_HDMI_Cable,Select_HDMI_Jack,Select_IPTV,Select_Local_Input,Select_PA_Control,Select_Remote_Input1,Select_Remote_Input2,Select_VGA_Cable,Help_Menu_Press,Home_button,Program_Volume_Slider_Press,Audio_Only_Press;
+DIGITAL_INPUT Startup_press,Confirm_System_Off,Program_Volume_Down,Program_Volume_Up,Select_AV_Jack,Select_Blank,Select_BluRay,Select_Device_Control_Bluray,Select_Device_Control_IPTV,Select_HDMI_Cable,Select_HDMI_Jack,Select_IPTV,Select_Local_Input,Select_PA_Control,Select_Remote_Input1,Select_Remote_Input2,Select_VGA_Cable,Help_Menu_Press,Home_button,Program_Volume_Slider_Press,Audio_Only_Press,Timeout_No_Interaction,System_Initiated_Shutdown;
 
 DIGITAL_INPUT _skip_,_skip_,_skip_,_skip_,_skip_;
  
@@ -524,6 +524,18 @@ Release Audio_Only_Press // Audio Only button on init screen
 	BuildHttpMessage("touchpanel", "Audio Only",USER,SESSION);
 }
 
+Release Timeout_No_Interaction // There was no interaction for a defined period of time, so shut down
+{
+	/* System Event */
+	BuildHttpMessage("controlProcessor", "No Interaction Timeout",SYSTEM,SESSION);
+	//BuildHttpMessage("touchpanel", "Program_Volume_Slider_Press",USER,SESSION);
+}
+
+Release System_Initiated_Shutdown // Nightly shutdowns, etc.
+{
+	/* System Event */
+	BuildHttpMessage("controlProcessor", "Automated System Shutdown",SYSTEM,SESSION);
+}
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
