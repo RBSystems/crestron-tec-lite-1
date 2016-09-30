@@ -1980,7 +1980,7 @@ Ym=-1
 SH=377
 Z=100
 Ht=1
-Hi=2
+Hi=1
 ]
 [
 ObjTp=Bw
@@ -16341,6 +16341,7 @@ Nm=Display1_Power_Off_fb
 ObjTp=Sg
 H=7
 Nm=Display1_Volume_Down_fb
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -16351,6 +16352,7 @@ Nm=//Display1_Emergency_Message_Supported_fb
 ObjTp=Sg
 H=9
 Nm=Display1_Volume_Down
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -16366,6 +16368,7 @@ Nm=Display1_Source_Select_2_fb
 ObjTp=Sg
 H=12
 Nm=Display1_Volume_Mute_Toggle
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -16382,6 +16385,7 @@ ObjTp=Sg
 H=15
 Nm=Volume_fb
 SgTp=2
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -16412,6 +16416,7 @@ Nm=System_busy
 ObjTp=Sg
 H=21
 Nm=Display1_Shutter_On_fb
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -16424,6 +16429,7 @@ ObjTp=Sg
 H=23
 Nm=Display1_Volume_fb
 SgTp=2
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -16444,6 +16450,7 @@ Nm=//Power_Toggle
 ObjTp=Sg
 H=27
 Nm=Display1_Volume_Up
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -16897,6 +16904,7 @@ SgTp=4
 ObjTp=Sg
 H=116
 Nm=Select_Input_Press
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -16955,6 +16963,7 @@ ObjTp=Sg
 H=127
 Nm=Volume_Mute
 SgTp=2
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -17117,6 +17126,7 @@ Nm=Initialize_Busy
 ObjTp=Sg
 H=159
 Nm=Display1_Volume_Up_fb
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -17255,11 +17265,13 @@ Nm=Help_Menu_Press
 ObjTp=Sg
 H=183
 Nm=Program_Volume_Down
+SgTf=Yes
 ]
 [
 ObjTp=Sg
 H=184
 Nm=Program_Volume_Up
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -17316,6 +17328,7 @@ Nm=Configure_Display1_Panasonic_TH-XXLF6
 ObjTp=Sg
 H=195
 Nm=Display1_Is_Panasonic_TH-XXLF6
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -17407,6 +17420,7 @@ SgTp=2
 ObjTp=Sg
 H=213
 Nm=Enable_No_Delay_Display_Power_Off
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -17453,11 +17467,13 @@ Nm=Microphones_Are_Active
 ObjTp=Sg
 H=222
 Nm=Volume_Up_Press_buf
+SgTf=Yes
 ]
 [
 ObjTp=Sg
 H=223
 Nm=Volume_Down_Press_buf
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -17518,6 +17534,7 @@ Nm=Select_HDbaseT_Input_fb
 ObjTp=Sg
 H=235
 Nm=Display1_Image_Mute_On_fb
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -17533,6 +17550,7 @@ Nm=Display1_Image_Mute_Off
 ObjTp=Sg
 H=238
 Nm=Display_Blank_fb
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -17548,6 +17566,7 @@ Nm=CEC_Program_Volume_Mute_Off_fb
 ObjTp=Sg
 H=241
 Nm=CEC_Mute_On_fb
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -17563,6 +17582,7 @@ Nm=Display_Unblank_osc
 ObjTp=Sg
 H=244
 Nm=CEC_Mute_Off_fb
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -18319,6 +18339,7 @@ SgTp=4
 ObjTp=Sg
 H=394
 Nm=Display1_Is_Sony_VPL-FHZ65
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -18329,6 +18350,7 @@ Nm=Configure_Display1_NEC_E-Series
 ObjTp=Sg
 H=396
 Nm=Display1_Is_NEC_E-Series
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -19161,12 +19183,12 @@ Nm=Display_Power_On_Button
 ObjTp=Sg
 H=554
 Nm=Program_Volume_Mute_Toggle
+SgTf=Yes
 ]
 [
 ObjTp=Sg
 H=555
 Nm=Get_Program_Info
-SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -19637,6 +19659,7 @@ ObjTp=Sg
 H=634
 Nm=Volume_from_Panel
 SgTp=2
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -19892,6 +19915,7 @@ Nm=Display2_Offline
 ObjTp=Sg
 H=684
 Nm=Display1_Is_RoomView_Connected
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -19902,16 +19926,19 @@ Nm=Display2_Is_RoomView_Connected
 ObjTp=Sg
 H=686
 Nm=//Display1_Is_Sharp_AQUOS_CEC
+SgTf=Yes
 ]
 [
 ObjTp=Sg
 H=687
 Nm=Display1_Is_CEC_Connected
+SgTf=Yes
 ]
 [
 ObjTp=Sg
 H=688
 Nm=Display1_Is_Sony_4K_TV
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -20033,6 +20060,7 @@ ObjTp=Sg
 H=709
 Nm=Display1_Volume
 SgTp=2
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -20602,7 +20630,6 @@ ObjTp=Sg
 H=817
 Nm=AddDns
 SgTp=4
-SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -20656,14 +20683,12 @@ ObjTp=Sg
 H=826
 Nm=RemDns
 SgTp=4
-SgTf=Yes
 ]
 [
 ObjTp=Sg
 H=827
 Nm=DNSServer2_fb
 SgTp=4
-SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -20772,7 +20797,6 @@ ObjTp=Sg
 H=845
 Nm=DNSServer1_fb
 SgTp=4
-SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -21892,6 +21916,7 @@ Nm=Ask_CEC_for_Power_Status_io
 ObjTp=Sg
 H=1056
 Nm=Increment_Volume
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -21977,6 +22002,7 @@ Nm=//CEC_Display_UI_Left
 ObjTp=Sg
 H=1073
 Nm=CEC_Display_UI_Volume_Up
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -22137,11 +22163,13 @@ Nm=//CEC_Display_UI_Stop
 ObjTp=Sg
 H=1105
 Nm=CEC_Display_UI_Volume_Down
+SgTf=Yes
 ]
 [
 ObjTp=Sg
 H=1106
 Nm=CEC_Display_UI_Mute
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -22327,6 +22355,7 @@ Nm=Select_HDMI4_HDMI
 ObjTp=Sg
 H=1143
 Nm=Program_Volume_Slider_Press
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -22359,6 +22388,7 @@ Nm=Initialize_Sony_4K_Volume
 ObjTp=Sg
 H=1149
 Nm=Sony_4K_Input_Selected
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -22391,11 +22421,13 @@ Nm=//Display2_Is_None
 ObjTp=Sg
 H=1155
 Nm=Program_Volume_Mute_Off
+SgTf=Yes
 ]
 [
 ObjTp=Sg
 H=1156
 Nm=Program_Volume_Mute_On
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -22427,6 +22459,7 @@ Nm=Select_HDMI4_HDMI/VGA
 ObjTp=Sg
 H=1162
 Nm=Decrement_Volume
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -22754,6 +22787,7 @@ SgTp=4
 ObjTp=Sg
 H=1226
 Nm=Display1_Volume_Mute_Off_fb
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -22997,6 +23031,7 @@ Nm=CEC_Power_Is_Turning_On_Pulse
 ObjTp=Sg
 H=1276
 Nm=CEC_Power_Is_Off_il
+SgTf=Yes
 ]
 [
 ObjTp=Sg
