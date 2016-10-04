@@ -22,10 +22,10 @@ CmVr=3.03
 DbVr=58.05.002.00
 DvcDbVr=78.05.001.00
 OpVr=RMC3 1.501.0013
-PgmNm=Brad Streeter, Dan Clegg
+PgmNm=Brad Streeter, Dan Clegg, David Allred
 DlrNm=BYU
 CltNm=TEC Lite - RMC3
-JpNo=3.0
+JpNo=4.5.9
 SmVr=1010
 DvVr=1010
 TpN1=1
@@ -38,7 +38,7 @@ FltTmp=1
 FpCS=0
 EnType=0
 ZeroOnIoOk=0
-PIT=TEC_Lite_4_5
+PIT=TEC_Lite_4_5_9
 SGMethod=1
 ]
 [
@@ -1971,61 +1971,45 @@ Mx10=0
 [
 ObjTp=Bw
 H=1
-Lx=58
-Ly=355
-Rx=1097
-Ry=662
+Lx=135
+Ly=64
+Rx=395
+Ry=264
 Xm=-1
 Ym=-1
 SH=336
 Z=100
-P=959
-Ht=4
-Hi=40
-]
-[
-ObjTp=Bw
-H=1
-Lx=40
-Ly=40
-Rx=829
-Ry=240
-Xm=-1
-Ym=-1
-SH=185
-Z=100
-P=955
-Ht=4
-Hi=40
-]
-[
-ObjTp=Bw
-H=1
-Lx=27
-Ly=334
-Rx=797
-Ry=534
-Xm=-1
-Ym=-1
-SH=91
-Z=100
-P=25
+P=2135
 Ht=1
+Hi=93
+]
+[
+ObjTp=Bw
+H=1
+Lx=419
+Ly=11
+Rx=1063
+Ry=211
+Xm=-1
+Ym=-1
+SH=363
+Z=100
+Ht=4
 Hi=1
 ]
 [
 ObjTp=Bw
 H=1
-Lx=26
-Ly=234
-Rx=589
-Ry=527
+Lx=196
+Ly=289
+Rx=1007
+Ry=489
 Xm=-1
 Ym=-1
-SH=51
+SH=385
 Z=100
 Ht=1
-Hi=2
+Hi=1
 ]
 [
 ObjTp=Bw
@@ -5111,7 +5095,7 @@ ObjVer=1
 PrH=4
 CF=2
 Cmn1=Display Controls
-mC=12
+mC=15
 C1=68
 C2=78
 C3=79
@@ -5124,6 +5108,9 @@ C9=85
 C10=86
 C11=65
 C12=351
+C13=383
+C14=384
+C15=386
 ]
 [
 ObjTp=Sm
@@ -5564,7 +5551,7 @@ n1I=3
 n1O=2
 Cmn1=Shutter Control\\
 mI=3
-I2=247
+I2=1330
 I3=243
 mO=2
 tO=2
@@ -5655,7 +5642,7 @@ ObjVer=1
 PrH=4
 CF=2
 Cmn1=Shut Down
-mC=11
+mC=12
 C1=88
 C2=89
 C3=90
@@ -5667,6 +5654,7 @@ C8=95
 C9=96
 C10=97
 C11=349
+C12=382
 ]
 [
 ObjTp=Sm
@@ -6347,8 +6335,8 @@ n1O=2
 Cmn1=Volume & Mute\\
 mI=3
 I1=684
-I2=184
-I3=183
+I2=1332
+I3=1333
 mO=2
 tO=2
 O1=222
@@ -9002,6 +8990,7 @@ I87=547
 I88=546
 I91=545
 I92=544
+I93=1337
 I94=543
 I95=542
 I96=540
@@ -9559,6 +9548,7 @@ I87=547
 I88=546
 I91=545
 I92=544
+I93=1337
 I94=543
 I95=542
 I96=540
@@ -14329,7 +14319,7 @@ n1I=1
 n1O=1
 Cmn1=Mute Toggle\\
 mI=1
-I1=554
+I1=1334
 mO=1
 tO=1
 O1=12
@@ -14372,7 +14362,7 @@ ObjVer=1
 PrH=4
 CF=2
 Cmn1=Audio Controls\\
-mC=14
+mC=16
 C1=334
 C2=298
 C3=303
@@ -14387,6 +14377,8 @@ C11=324
 C12=353
 C13=359
 C14=360
+C15=387
+C16=388
 ]
 [
 ObjTp=Sm
@@ -14415,8 +14407,9 @@ ObjVer=1
 PrH=301
 CF=2
 Cmn1=Program Out
-mC=1
+mC=2
 C1=304
+C2=385
 ]
 [
 ObjTp=Sm
@@ -14430,8 +14423,8 @@ n1I=3
 n1O=1
 Cmn1=Mute Reset
 mI=3
-I1=184
-I2=183
+I1=1332
+I2=1333
 I3=116
 mO=1
 tO=1
@@ -15197,6 +15190,7 @@ I87=547
 I88=546
 I91=545
 I92=544
+I93=1337
 I94=543
 I95=542
 I96=540
@@ -15771,7 +15765,7 @@ n1I=2
 n1O=1
 Cmn1=Shutter Off And Not CEC
 mI=2
-I1=181
+I1=1336
 I2=1053
 mO=1
 tO=1
@@ -15915,7 +15909,7 @@ n1O=5
 Cmn1=RoomView Connected Display Audio
 mI=6
 I1=684
-I2=1143
+I2=1335
 I3=159
 I4=7
 I5=134
@@ -16148,7 +16142,7 @@ n1I=2
 n1O=1
 Cmn1=Display1 Shutter Off fb
 mI=2
-I1=181
+I1=1336
 I2=1035
 mO=1
 tO=1
@@ -16653,6 +16647,139 @@ tO=1
 O1=1326
 ]
 [
+ObjTp=Sm
+H=382
+SmC=20
+Nm=Buffer
+ObjVer=1
+PrH=87
+CF=2
+n1I=2
+n1O=1
+Cmn1=Delayed Display Power Off Models
+mI=2
+I1=2
+I2=215
+mO=1
+tO=1
+O1=5
+]
+[
+ObjTp=Sm
+H=383
+SmC=13
+Nm=Toggle
+ObjVer=1
+PrH=67
+CF=2
+n1I=3
+n1O=2
+Cmn1=Repeat Blank Signal
+mI=3
+I1=247
+I2=21
+I3=1
+mO=2
+tO=2
+O1=1331
+]
+[
+ObjTp=Sm
+H=384
+SmC=8
+Nm=Oscillator
+ObjVer=1
+PrH=67
+CF=2
+n1I=1
+n1O=1
+Cmn1=Select Blank Occurred
+mI=1
+I1=1331
+mO=1
+tO=1
+O1=1330
+mP=2
+P1=1t
+P2=3s
+]
+[
+ObjTp=Sm
+H=385
+SmC=20
+Nm=Buffer
+ObjVer=1
+PrH=303
+CF=2
+n1I=5
+n1O=4
+Cmn1=Only Allow Program Up/Down/Mute when not blanked
+mI=5
+I1=1336
+I2=184
+I3=183
+I4=554
+I5=1143
+mO=4
+tO=4
+O1=1332
+O2=1333
+O3=1334
+O4=1335
+]
+[
+ObjTp=Sm
+H=386
+SmC=1
+Nm=AND
+ObjVer=1
+PrH=67
+CF=2
+n1I=2
+n1O=1
+Cmn1=RV Display Shutter Off
+mI=2
+I1=181
+I2=716
+mO=1
+tO=1
+O1=1336
+]
+[
+ObjTp=Sm
+H=387
+SmC=205
+Nm=NOT
+ObjVer=1
+PrH=301
+CF=2
+n1I=1
+n1O=1
+Cmn1=Enable Volume Slider Press when unblanked
+mI=1
+I1=1230
+mO=1
+tO=1
+O1=1337
+]
+[
+ObjTp=Sm
+H=388
+SmC=3
+Nm=OR
+ObjVer=1
+PrH=301
+CF=2
+n1I=1
+n1O=1
+Cmn1=Enable Volume Slider Press when unblanked\\
+mI=1
+I1=1230
+mO=1
+tO=1
+O1=1337
+]
+[
 ObjTp=CED
 H=1
 SmH=109
@@ -16770,6 +16897,7 @@ Nm=Display1_Power_Off_fb
 ObjTp=Sg
 H=7
 Nm=Display1_Volume_Down_fb
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -16780,6 +16908,7 @@ Nm=//Display1_Emergency_Message_Supported_fb
 ObjTp=Sg
 H=9
 Nm=Display1_Volume_Down
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -16795,16 +16924,19 @@ Nm=Display1_Source_Select_2_fb
 ObjTp=Sg
 H=12
 Nm=Display1_Volume_Mute_Toggle
+SgTf=Yes
 ]
 [
 ObjTp=Sg
 H=13
 Nm=Display1_Shutter_Off
+SgTf=Yes
 ]
 [
 ObjTp=Sg
 H=14
 Nm=Display1_Shutter_On
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -16821,6 +16953,7 @@ Nm=Display1_Online_fb
 ObjTp=Sg
 H=17
 Nm=RV_Display1_Volume_Mute_Off_fb
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -16841,6 +16974,7 @@ Nm=System_busy
 ObjTp=Sg
 H=21
 Nm=Display1_Shutter_On_fb
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -16873,6 +17007,7 @@ Nm=//Power_Toggle
 ObjTp=Sg
 H=27
 Nm=Display1_Volume_Up
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -17053,7 +17188,6 @@ SgTp=4
 ObjTp=Sg
 H=62
 Nm=Display1_Power_On_fb
-SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -17374,6 +17508,7 @@ Nm=//Display1_Source_Select_14
 ObjTp=Sg
 H=125
 Nm=//Display1_Volume_Mute_On
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -17406,7 +17541,6 @@ Nm=Select_Overflow
 ObjTp=Sg
 H=131
 Nm=System_Off_Button
-SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -17423,6 +17557,7 @@ SgTp=2
 ObjTp=Sg
 H=134
 Nm=RV_Display1_Volume_Mute_On_fb
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -17433,7 +17568,6 @@ Nm=Startup
 ObjTp=Sg
 H=136
 Nm=Power_Press_On_and
-SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -17444,7 +17578,6 @@ Nm=Decline_System_Off
 ObjTp=Sg
 H=138
 Nm=System_Off_Page_Enable
-SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -17470,7 +17603,6 @@ Nm=Initialize_Welcome_Page_Enable
 ObjTp=Sg
 H=143
 Nm=Welcome_Page_Enable
-SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -17552,6 +17684,7 @@ Nm=Initialize_Busy
 ObjTp=Sg
 H=159
 Nm=Display1_Volume_Up_fb
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -17680,6 +17813,7 @@ Nm=Touchpanel1_Offline
 ObjTp=Sg
 H=181
 Nm=RV_Display1_Shutter_Off_fb
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -17690,11 +17824,13 @@ Nm=Help_Menu_Press
 ObjTp=Sg
 H=183
 Nm=Program_Volume_Down
+SgTf=Yes
 ]
 [
 ObjTp=Sg
 H=184
 Nm=Program_Volume_Up
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -17888,11 +18024,13 @@ Nm=Microphones_Are_Active
 ObjTp=Sg
 H=222
 Nm=Volume_Up_Press_buf
+SgTf=Yes
 ]
 [
 ObjTp=Sg
 H=223
 Nm=Volume_Down_Press_buf
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -17953,16 +18091,19 @@ Nm=Select_HDbaseT_Input_fb
 ObjTp=Sg
 H=235
 Nm=Display1_Image_Mute_On_fb
+SgTf=Yes
 ]
 [
 ObjTp=Sg
 H=236
 Nm=Display1_Image_Mute_On
+SgTf=Yes
 ]
 [
 ObjTp=Sg
 H=237
 Nm=Display1_Image_Mute_Off
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -18018,7 +18159,6 @@ Nm=Display_Blank
 ObjTp=Sg
 H=248
 Nm=Startup_Blank_Oscillator_Reset
-SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -19090,7 +19230,6 @@ Nm=Configure_Display1_None
 ObjTp=Sg
 H=457
 Nm=Display1_Is_None
-SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -19598,6 +19737,7 @@ Nm=Display_Power_On_Button
 ObjTp=Sg
 H=554
 Nm=Program_Volume_Mute_Toggle
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -20328,6 +20468,7 @@ Nm=Display2_Offline
 ObjTp=Sg
 H=684
 Nm=Display1_Is_RoomView_Connected
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -20504,6 +20645,7 @@ Nm=Display1_Source_Select_15_fb
 ObjTp=Sg
 H=716
 Nm=Display1_Image_Mute_Off_fb
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -20808,6 +20950,7 @@ SgTp=4
 ObjTp=Sg
 H=776
 Nm=//Display1_Volume_Mute_Off
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -22219,6 +22362,7 @@ Nm=CEC_Power_Is_Turning_On_io
 ObjTp=Sg
 H=1035
 Nm=CEC_Display1_Shutter_Off_fb
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -22759,6 +22903,7 @@ Nm=Select_HDMI4_HDMI
 ObjTp=Sg
 H=1143
 Nm=Program_Volume_Slider_Press
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -22823,6 +22968,7 @@ Nm=//Display2_Is_None
 ObjTp=Sg
 H=1155
 Nm=Program_Volume_Mute_Off
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -23217,7 +23363,6 @@ Nm=Immediate_Power_Query
 ObjTp=Sg
 H=1232
 Nm=System_power_off_fb
-SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -23701,10 +23846,55 @@ Nm=Main_Display_Control_Page_Enable_il
 ObjTp=Sg
 H=1328
 Nm=//Unknown_system_off_page_status
-SgTf=Yes
 ]
 [
 ObjTp=Sg
 H=1329
 Nm=Show_Main_Display_Page
+]
+[
+ObjTp=Sg
+H=1330
+Nm=Display_Blank_osc
+]
+[
+ObjTp=Sg
+H=1331
+Nm=Display_Blank_ros
+]
+[
+ObjTp=Sg
+H=1332
+Nm=Program_Volume_Up_buf
+SgTf=Yes
+]
+[
+ObjTp=Sg
+H=1333
+Nm=Program_Volume_Down_buf
+SgTf=Yes
+]
+[
+ObjTp=Sg
+H=1334
+Nm=Program_Volume_Mute_Toggle_buf
+SgTf=Yes
+]
+[
+ObjTp=Sg
+H=1335
+Nm=Program_Volume_Slider_Press_buf
+SgTf=Yes
+]
+[
+ObjTp=Sg
+H=1336
+Nm=RV_Display1_Shutter_Off_and
+SgTf=Yes
+]
+[
+ObjTp=Sg
+H=1337
+Nm=Enable_Volume_Slider_Press
+SgTf=Yes
 ]
