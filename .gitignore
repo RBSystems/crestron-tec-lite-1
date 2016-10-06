@@ -17,3 +17,4 @@ src/FT/BSS London Crestron/*.ush
 *.rej
 *.patch
 patchLog.txt
+*.sgd2
