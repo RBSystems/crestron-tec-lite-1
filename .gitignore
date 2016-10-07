@@ -1,7 +1,6 @@
 *.lpz
 *.sig
 *.zip
-*.vtz
 *.hash
 src/RMC3/TEC Lite TSW-750.VTZ*
 *.hash
