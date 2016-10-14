@@ -69,7 +69,7 @@ Comments: This Crestron Simpl+ Module is to allow Series 2 processors (and later
 #DEFINE_CONSTANT	Help "AAAAAgAAAMQAAABNAw=="
 #DEFINE_CONSTANT	Home "AAAAAQAAAAEAAABgAw=="
 #DEFINE_CONSTANT	iManual "AAAAAgAAABoAAAB7Aw=="
-#DEFINE_CONSTANT	Input "AAAAAQAAAAEAAAAlAw=="
+#DEFINE_CONSTANT	ChangeInput "AAAAAQAAAAEAAAAlAw=="
 #DEFINE_CONSTANT	Jump "AAAAAQAAAAEAAAA7Aw=="
 #DEFINE_CONSTANT	KeypadDown "AAAAAQAAAAEAAAB1Aw=="
 #DEFINE_CONSTANT	KeypadExit "AAAAAQAAAAEAAABjAw=="
@@ -142,11 +142,12 @@ Comments: This Crestron Simpl+ Module is to allow Series 2 processors (and later
 /*******************************************************************************************
   DIGITAL, ANALOG and SERIAL INPUTS and OUTPUTS
 *******************************************************************************************/
-DIGITAL_INPUT clientConnected,SwitchToHDMI1,SwitchToHDMI2,SwitchToHDMI3,SwitchToHDMI4,SwitchToComposite1;               
+DIGITAL_INPUT clientConnected,GetAvailableCommands,SwitchToHDMI1,SwitchToHDMI2,SwitchToHDMI3,SwitchToHDMI4,SwitchToComposite1;
+STRING_INPUT ipAddress[35]; 
 BUFFER_INPUT clientBuffer[100];
 
 DIGITAL_OUTPUT _clientConnected;
-STRING_OUTPUT Transmit;
+STRING_OUTPUT _skip_,_skip_,_skip_,_skip_,toClientBuffer$;
 
 /*******************************************************************************************
   SOCKETS
@@ -157,9 +158,9 @@ TCP_CLIENT client[1024];
 /*******************************************************************************************
   Global Variables
 *******************************************************************************************/
-STRING REPORTINGHOST[60],REPORTINGHOSTIP[30],INPUT1[30],INPUT2[30],INPUT3[30],INPUT4[30],INPUT5[30],INPUT6[30],INPUT7[30],COMMAND[20];
+STRING HOST[60],HOSTIP[30],INPUT1[30],INPUT2[30],INPUT3[30],INPUT4[30],INPUT5[30],INPUT6[30],INPUT7[30],COMMAND[20];
 STRING MESSAGE[BIGGESTSIZE];
-INTEGER REPORTINGHOSTPORT;
+INTEGER HOSTPORT;
 
 /*******************************************************************************************
   Functions
@@ -177,68 +178,46 @@ Function Error(string msg)
 
 Function Send(string msg)
 {
-	//Print("Sending: %s",msg);
+	Print("Sending: %s",msg);
 	SocketSend(client,msg);	
 }
-Function BuildHttpMessage(STRING action)
+Function GetCommands()
 {
 	SIGNED_INTEGER dst,mNum,yNum,dNum,ContentLength;
     SIGNED_LONG_INTEGER PortNumber;
-	STRING timestamp[24];
-	STRING dateStr[24];
-	STRING timeStr[24];
-	STRING header1[1024],header2[1024],header3[1024],header4[1024],header5[1024],header6[1024],header7[1024];
-	STRING innerMsg1[1024],innerMsg2[1024],innerMsg3[1024];
+	STRING header1[1024],header2[1024],header3[1024],header4[1024],header5[1024],header6[1024];
+	STRING innerMsg1[1024];	
 	STRING CLString[1024];
-	INTEGER spacePosition;
-                           
+	                       
 	_clientConnected = 1;
-   
-	mNum = GetMonthNum();
-	yNum = GetYearNum();
-	dNum = GetDateNum();
-	
-	dateStr = ITOA(yNum) + "-" + ITOA(mNum) + "-"+ ITOA(dNum);
-	timeStr = Time();
-	dst = GetDST();
-                
-	// Change the timestamp depending on DST
-	if(dst = 1) {
-		timestamp = dateStr +"T"+ timeStr + "-0600"; // YYYY-MM-DDTHH:mm:ss.SSS-0000
-	} else if(dst = 2) {
-		timestamp = dateStr +"T"+ timeStr + "-0700"; // YYYY-MM-DDTHH:mm:ss.SSS-0000
-	}
-	
 
-	innerMsg1 = "{\"address\":\"10.5.34.127\",\"command\":\"" + action + "\"}";
-	ContentLength = Len(innerMsg1) + Len(innerMsg2) + Len(innerMsg3);
+	innerMsg1 = "{\"method\":\"getRemoteControllerInfo\",\"params\":[],\"id\":10,\"version\":\"1.0\"}";
+	ContentLength = Len(innerMsg1);
 	CLString = ITOA(ContentLength);
 
-	header1 = "POST /byuoitav-sony-control-microservice/0.1/command HTTP/1.1" + NEWLINE;
-	header2 = "Host: " + REPORTINGHOST + ":" + ITOA(REPORTINGHOSTPORT) + NEWLINE;
-//	header3 = "Connection: keep-alive" + NEWLINE;     
+	header1 = "POST /sony/system HTTP/1.1" + NEWLINE;
+	header2 = "Host: " + HOST + NEWLINE;
+	header3 = "Accept: */*" + NEWLINE;     
 	header4 = "Content-Length: " + CLString + NEWLINE;
-	header5 = "Content-type: application/json" + NEWLINE;
-	header6 = "Authorization: Bearer b8dbb5d5547f10b7fc7c559fafa43ceb" + NEWLINE;
-	header7 = "Accept: application/json" + NEWLINE;
+	header5 = "Content-type: application/x-www-form-urlencoded" + NEWLINE;
+	header6 = "Cache-Control: no-cache" + NEWLINE;
+//	POST /sony/system HTTP/1.1\nHost: 10.5.34.146\nAccept: */*\nContent-Length: 72\nContent-Type: application/x-www-form-urlencoded\n\n{"method":"getRemoteControllerInfo","params":[],"id":10,"version":"1.0"}
 
 	Print("%s",header1);
 	Print("%s",header2);
-//	Print("%s",header3);
+	Print("%s",header3);
 	Print("%s",header4);
 	Print("%s",header5);
 	Print("%s",header6);
-	Print("%s",header7);
 	Print("%s",NEWLINE);
 	Print("%s",innerMsg1);
 
 	Send(header1);
 	Send(header2);
-//	Send(header3);
+	Send(header3);
 	Send(header4);
 	Send(header5);
 	Send(header6);
-	Send(header7);
 	Send(NEWLINE);
 	Send(innerMsg1);
 
@@ -250,41 +229,51 @@ Function BuildHttpMessage(STRING action)
   Event Handlers
   (Uncomment and declare additional event handlers as needed)
 *******************************************************************************************/
+CHANGE ipAddress
+{
+	HOST = ipAddress;
+	HOSTPORT = 80;
+}
+
+RELEASE GetAvailableCommands
+{
+	GetCommands();
+}
 
 RELEASE SwitchToHDMI1
 {
-	BuildHttpMessage(HDMI1);
+	//BuildHttpMessage(HDMI1);
 }
 
 RELEASE SwitchToHDMI2
 {
-	BuildHttpMessage(HDMI2);
+	//BuildHttpMessage(HDMI2);
 }
 
 RELEASE SwitchToHDMI3
 {
-	BuildHttpMessage(HDMI3);
+	//BuildHttpMessage(HDMI3);
 }
 
 RELEASE SwitchToHDMI4
 {
-	BuildHttpMessage(HDMI4);
+	//BuildHttpMessage(HDMI4);
 }
 
 RELEASE SwitchToComposite1
 {
-    BuildHttpMessage(Video1);
+    //BuildHttpMessage(Video1);
 
 }
 
 PUSH clientConnected
 {
  	SIGNED_INTEGER status; // variable to capture/store socket status
-	status = SocketConnectClient (client, REPORTINGHOST, REPORTINGHOSTPORT, 0); // SocketConnectClient(tcpClient,host,port,reconnect)
+	status = SocketConnectClient (client, HOST, HOSTPORT, 0); // SocketConnectClient(tcpClient,host,port,reconnect)
     
 	// Status < 0 is an error, greater than is a successful connection
     if (status < 0)
-        Print("Error connecting socket to address %s on port  %d", REPORTINGHOST, REPORTINGHOSTPORT);
+        Print("Error connecting socket to address %s on port  %d", HOST, HOSTPORT);
 }
  
 
@@ -295,7 +284,7 @@ RELEASE clientConnected
 	status = SocketDisconnectClient(client);
 
 	if (status < 0)
-		Print("Error disconnecting socket to address %s on port %d",REPORTINGHOST,REPORTINGHOSTPORT);
+		Print("Error disconnecting socket to address %s on port %d",HOST,HOSTPORT);
 	_clientConnected = 1;
 }
 
@@ -310,15 +299,15 @@ THREADSAFE SOCKETCONNECT client
 	SIGNED_INTEGER LocalStatus,PortNumber;
 	Print("OnConnect: input buffer size is: %d\n", Len(client.SocketRxBuf));
 
-    LocalStatus = SocketGetRemoteIPAddress(client, REPORTINGHOST);
+    LocalStatus = SocketGetRemoteIPAddress(client, HOST);
     PortNumber = SocketGetPortNumber(client);
 
     if (LocalStatus < 0)
         Print("Error getting remote ip address. %d\n", LocalStatus);
 	else if (PortNumber < 0)
-        Print("Error getting client port number. %ld\n", REPORTINGHOSTPORT);
+        Print("Error getting client port number. %ld\n", HOSTPORT);
     else
-		Print("OnConnect: Connected to port %ld on address %s\n", REPORTINGHOSTPORT, REPORTINGHOST);
+		Print("OnConnect: Connected to port %ld on address %s\n", HOSTPORT, HOST);
 }
 
 // The SOCKETDISCONNECT event is called when a TCP_CLIENT or  TCP_SERVER socket is disconnected. Determine if this was done remotely (i.e. network, remote server, etc.) or locally via this module
@@ -442,9 +431,8 @@ Function Main()
     //   runs and propagates the values to them.
     WaitForInitializationComplete();
 
-	REPORTINGHOST = "api.byu.edu";
-	//REPORTINGHOSTIP = "10.5.34.127";
-	REPORTINGHOSTPORT = 443;
+	HOST = "";
+	HOSTPORT = 80;
 	INPUT1 = "";
 	INPUT2 = "";
 	INPUT3 = "";
