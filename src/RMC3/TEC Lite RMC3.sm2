@@ -1979,6 +1979,19 @@ Mx12=0
 [
 ObjTp=Bw
 H=1
+Lx=220
+Ly=480
+Rx=480
+Ry=680
+Xm=-1
+Ym=-1
+SH=48
+Z=100
+Ht=4
+]
+[
+ObjTp=Bw
+H=1
 Lx=489
 Ly=0
 Rx=978
@@ -1988,7 +2001,7 @@ Ym=-1
 SH=45
 Z=100
 Ht=1
-Hi=2
+Hi=1
 ]
 [
 ObjTp=Bw
@@ -18036,6 +18049,7 @@ SgTp=4
 ObjTp=Sg
 H=177
 Nm=Store_Configuration
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -23998,6 +24012,7 @@ SgTf=Yes
 ObjTp=Sg
 H=1319
 Nm=Store_Configuration_and_Exit
+SgTf=Yes
 ]
 [
 ObjTp=Sg
