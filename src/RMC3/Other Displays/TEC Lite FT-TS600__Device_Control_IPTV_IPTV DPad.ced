@@ -13,7 +13,7 @@ Hint=IPTV DPad (Smart Object ID=43)
 Code=2
 SGControlType=DPad
 SGControlName=IPTV DPad
-GUID=0562B6E7-D95D-4435-8AFF-954B1ED172B7
+GUID=4604A070-15F7-4A4D-B01E-9FB36AEC3718
 SmplCName=TEC Lite FT-TS600__Device_Control_IPTV_IPTV DPad.ced
 SMWRev=4.02.19
 Expand=expand_random
