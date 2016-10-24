@@ -1,0 +1,89 @@
+/*******************************************************************************************
+  SIMPL+ Module Information
+*******************************************************************************************/
+/*
+Dealer Name:
+System Name:
+System Number:
+Programmer:
+Comments:
+*/
+
+/*******************************************************************************************
+  Compiler Directives
+*******************************************************************************************/
+#DEFAULT_VOLATILE
+#ENABLE_STACK_CHECKING
+#ENABLE_TRACE
+
+/*INTEGER_PARAMETER Port;
+
+
+DIGITAL_INPUT	_SKIP_;		DIGITAL_OUTPUT	_SKIP_;
+DIGITAL_INPUT	_SKIP_;		DIGITAL_OUTPUT	_SKIP_;
+DIGITAL_INPUT	_SKIP_;		DIGITAL_OUTPUT	_SKIP_;
+DIGITAL_INPUT	_SKIP_;		DIGITAL_OUTPUT	_SKIP_;
+
+STRING_PARAMETER	Username[16];
+STRING_PARAMETER	Password[16]; */
+
+DIGITAL_INPUT	SendRequest;
+STRING_INPUT	URL$[1024];
+//STRING_INPUT	Address[64];
+
+STRING_INPUT	BODY$[65534];
+STRING_OUTPUT	ERR_MSG$;	
+STRING_OUTPUT	RX$;
+DIGITAL_OUTPUT	ERR;
+
+#USER_SIMPLSHARP_LIBRARY "SIMPLSharpNetUtils"
+
+STRING Address_Cache[64];
+STRING URL[1024];
+STRING BODY[65534];
+
+
+
+HTTPRequest Client;
+
+Callback Function MyOnReceive(String s)
+{
+	TRACE("On Rx$");
+	RX$ = s;
+}
+
+Callback Function MyOnError(String s)
+{
+	Err_msg$ = s;
+	pulse(10,Err);
+}
+
+Change URL$
+{
+	URL = URL$;
+}
+
+Change BODY$
+{
+	BODY = BODY$;
+}
+
+RELEASE SendRequest
+{
+	Client.URL = URL;
+	Client.Post(BODY,"");
+} 
+
+Function Init()
+{
+	RegisterDelegate(Client,OnResponse,MyOnReceive);
+	RegisterDelegate(Client,OnError,MyOnError);
+}
+
+Function Main()
+{
+	Body = "";
+	URL = "";
+	WaitForInitializationComplete();
+	Init();
+}
