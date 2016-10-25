@@ -100,6 +100,7 @@ RELEASE Mute_Off
 
 RELEASE Mute_Toggle
 {
+	Print("Got into Mute Toggle");
 	if(Enabled = 1){
 		if( Muted = 0 )
 		{
@@ -119,7 +120,7 @@ CHANGE Vol_fb
 	}
 }
 
-/*******************************************************************************************
+/*******************************************************************************************			
   Main()
   Uncomment and place one-time startup code here
   (This code will get called when the system starts up)

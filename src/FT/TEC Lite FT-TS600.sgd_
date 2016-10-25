@@ -4,13 +4,13 @@ Sgntr=SGD
 RelVrs=3
 VTProeVer=6.1.03
 Schema=1
-CRCGUID=DD2102D9-55EA-424D-8B95-DC5B51C7D036
+CRCGUID=A34E2715-6B5E-41A8-A831-B2D7F567C63E
 ]
 ;================================================================================
 [
 ObjTp=Hd
 ProjectFile=TEC Lite FT-TS600.vtp
-VtpGuid=FF416CE1-DE21-47D2-8F44-E1EB3175FEDC
+VtpGuid=A0AC0C36-9A32-4CCE-8D83-540BCA5D4D1F
 ]
 ;================================================================================
 [
@@ -20,7 +20,7 @@ Hint=Blu-ray DPad (Smart Object ID=41)
 Code=1
 SGControlType=DPad
 SGControlName=Blu-ray DPad
-GUID=F6C1D7A4-C0B9-4068-917A-7BC358390FEE
+GUID=A49845BD-B2A7-4861-8479-E040D7A9B9FE
 SmplCName=TEC Lite FT-TS600__Device_Control_Blu-ray_Blu-ray DPad.ced
 SMWRev=4.02.19
 Expand=expand_random
@@ -97,7 +97,7 @@ Hint=IPTV DPad (Smart Object ID=43)
 Code=2
 SGControlType=DPad
 SGControlName=IPTV DPad
-GUID=0562B6E7-D95D-4435-8AFF-954B1ED172B7
+GUID=F3F43E15-CA4D-43D4-A14A-CD400BD97C8B
 SmplCName=TEC Lite FT-TS600__Device_Control_IPTV_IPTV DPad.ced
 SMWRev=4.02.19
 Expand=expand_random
@@ -174,7 +174,7 @@ Hint=IPTV Keypad (Smart Object ID=42)
 Code=3
 SGControlType=Simple Keypad
 SGControlName=IPTV Keypad
-GUID=4F402C0D-7A28-43BA-9385-676767AF7AA7
+GUID=5EC76A43-61E4-4AAC-A6B7-40FFDC5737D4
 SmplCName=TEC Lite FT-TS600__Device_Control_IPTV_IPTV Keypad.ced
 SMWRev=4.02.19
 Expand=expand_random
