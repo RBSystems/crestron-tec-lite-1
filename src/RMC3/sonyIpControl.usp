@@ -82,8 +82,8 @@ Comments: Call Services
 #DEFINE_CONSTANT	Next "AAAAAgAAAJcAAAA9Aw=="
 #DEFINE_CONSTANT	Num0 "AAAAAQAAAAEAAAAJAw=="
 #DEFINE_CONSTANT	Num1 "AAAAAQAAAAEAAAAAAw=="
-#DEFINE_CONSTANT	Num11 "AAAAAQAAAAEAAAAKAw=="
-#DEFINE_CONSTANT	Num12 "AAAAAQAAAAEAAAALAw=="
+//#DEFINE_CONSTANT	Num11 "AAAAAQAAAAEAAAAKAw=="
+//#DEFINE_CONSTANT	Num12 "AAAAAQAAAAEAAAALAw=="
 #DEFINE_CONSTANT	Num2 "AAAAAQAAAAEAAAABAw=="
 #DEFINE_CONSTANT	Num3 "AAAAAQAAAAEAAAACAw=="
 #DEFINE_CONSTANT	Num4 "AAAAAQAAAAEAAAADAw=="
@@ -147,72 +147,33 @@ Comments: Call Services
 STRING_INPUT	PSK$[32],IPAddress[32];
 //STRING_INPUT	URL$[1024];
 
-DIGITAL_INPUT IP_ActionMenu;
-//DIGITAL_INPUT IP_AD;
-DIGITAL_INPUT IP_Analog;
-DIGITAL_INPUT IP_Analog2;
-DIGITAL_INPUT IP_AnalogRgb1;
-//DIGITAL_INPUT IP_Assists;
-//DIGITAL_INPUT IP_Audio;
-/*DIGITAL_INPUT IP_AudioMixDown;
-DIGITAL_INPUT IP_AudioMixUp;
-DIGITAL_INPUT IP_AudioQualityMode;
-DIGITAL_INPUT IP_Blue;
-DIGITAL_INPUT IP_BS;
-DIGITAL_INPUT IP_BSCS;*/
-DIGITAL_INPUT IP_ChannelDown;
+DIGITAL_INPUT IP_TVPower;
+DIGITAL_INPUT IP_PowerOff;
+DIGITAL_INPUT IP_WakeUp;
+DIGITAL_INPUT _SKIP_,_SKIP_;
+DIGITAL_INPUT IP_VolumeUp; 
+DIGITAL_INPUT IP_VolumeDown;
+DIGITAL_INPUT IP_Mute;      
+DIGITAL_INPUT _SKIP_,_SKIP_;
 DIGITAL_INPUT IP_ChannelUp;
-DIGITAL_INPUT IP_ClosedCaption;
-DIGITAL_INPUT IP_Component1;
-DIGITAL_INPUT IP_Component2;
-DIGITAL_INPUT IP_Confirm;
-//DIGITAL_INPUT IP_CS;
+DIGITAL_INPUT IP_ChannelDown;
+DIGITAL_INPUT _SKIP_,_SKIP_;
+/*DIGITAL_INPUT IP_CursorUp;
 DIGITAL_INPUT IP_CursorDown;
 DIGITAL_INPUT IP_CursorLeft;
-DIGITAL_INPUT IP_CursorRight;
-DIGITAL_INPUT IP_CursorUp;
-/*DIGITAL_INPUT IP_Ddata;
-DIGITAL_INPUT IP_DemoMode;
-DIGITAL_INPUT IP_DemoSurround;
-DIGITAL_INPUT IP_Digital;
-DIGITAL_INPUT IP_DigitalToggle;*/
-DIGITAL_INPUT IP_Display;
-//DIGITAL_INPUT IP_DOT;
-DIGITAL_INPUT IP_DpadCenter;
-//DIGITAL_INPUT IP_DUX;
-DIGITAL_INPUT IP_Enter;
-/*DIGITAL_INPUT IP_EPG;
-DIGITAL_INPUT IP_FlashMinus;
-DIGITAL_INPUT IP_FlashPlus;
-DIGITAL_INPUT IP_FootballMode;
-DIGITAL_INPUT IP_Forward;
-DIGITAL_INPUT IP_Guide;
-DIGITAL_INPUT IP_Green;*/
-DIGITAL_INPUT IP_HDMI1;
-DIGITAL_INPUT IP_HDMI2;
-DIGITAL_INPUT IP_HDMI3;
-DIGITAL_INPUT IP_HDMI4;
-//GITAL_INPUT IP_Help;
-DIGITAL_INPUT IP_Home;
-//DIGITAL_INPUT IP_iManual;
-DIGITAL_INPUT IP_InputButton;
-//DIGITAL_INPUT IP_Jump;
-DIGITAL_INPUT IP_KeypadDown;
-DIGITAL_INPUT IP_KeypadExit;
-DIGITAL_INPUT IP_KeypadLeft;
-DIGITAL_INPUT IP_KeypadReturn;
-DIGITAL_INPUT IP_KeypadRight;
+DIGITAL_INPUT IP_CursorRight;*/
 DIGITAL_INPUT IP_KeypadUp;
-/*DIGITAL_INPUT IP_Media;
-DIGITAL_INPUT IP_MediaAudioTrack;
-DIGITAL_INPUT IP_Mode3D;*/
-DIGITAL_INPUT IP_Mute;
-//DIGITAL_INPUT IP_Netflix;
-//DIGITAL_INPUT IP_Next;
+DIGITAL_INPUT IP_KeypadDown;
+DIGITAL_INPUT IP_KeypadLeft;
+DIGITAL_INPUT IP_KeypadRight;
+DIGITAL_INPUT IP_KeypadReturn;
+DIGITAL_INPUT IP_DpadCenter;
+DIGITAL_INPUT IP_Confirm;
+DIGITAL_INPUT IP_Enter;
+DIGITAL_INPUT IP_KeypadExit;
+DIGITAL_INPUT _SKIP_,_SKIP_;
 DIGITAL_INPUT IP_Num0;
 DIGITAL_INPUT IP_Num1;
-DIGITAL_INPUT IP_Num11;
-DIGITAL_INPUT IP_Num12;
 DIGITAL_INPUT IP_Num2;
 DIGITAL_INPUT IP_Num3;
 DIGITAL_INPUT IP_Num4;
@@ -221,9 +182,72 @@ DIGITAL_INPUT IP_Num6;
 DIGITAL_INPUT IP_Num7;
 DIGITAL_INPUT IP_Num8;
 DIGITAL_INPUT IP_Num9;
-//DIGITAL_INPUT IP_OneTouchTimeRec;
-DIGITAL_INPUT IP_OneTouchView;
+DIGITAL_INPUT _SKIP_,_SKIP_;
+DIGITAL_INPUT IP_InputButton;
+DIGITAL_INPUT IP_Analog;
+DIGITAL_INPUT IP_Analog2;
+DIGITAL_INPUT IP_AnalogRgb1;
+DIGITAL_INPUT IP_Component1;
+DIGITAL_INPUT IP_Component2;
+DIGITAL_INPUT IP_HDMI1;
+DIGITAL_INPUT IP_HDMI2;
+DIGITAL_INPUT IP_HDMI3;
+DIGITAL_INPUT IP_HDMI4;
+DIGITAL_INPUT IP_Tv_Radio;
+DIGITAL_INPUT IP_TvAnalog;
+DIGITAL_INPUT IP_TvAntennaCable;
+DIGITAL_INPUT IP_TvInput;
+DIGITAL_INPUT IP_TvSatellite;
+DIGITAL_INPUT IP_Video1;
+DIGITAL_INPUT IP_Video2;
+DIGITAL_INPUT IP_TV;
+DIGITAL_INPUT _SKIP_,_SKIP_;
+DIGITAL_INPUT IP_Home;
+DIGITAL_INPUT IP_TopMenu;
+DIGITAL_INPUT IP_ActionMenu;
+DIGITAL_INPUT IP_PopUpMenu;
+DIGITAL_INPUT IP_Display;
+DIGITAL_INPUT IP_Yellow;
+DIGITAL_INPUT IP_Blue;
+DIGITAL_INPUT IP_Red;
+DIGITAL_INPUT IP_Green;
 DIGITAL_INPUT IP_Options;
+DIGITAL_INPUT _SKIP_,_SKIP_;
+DIGITAL_INPUT Hotel;
+DIGITAL_INPUT _SKIP_,_SKIP_;
+//DIGITAL_INPUT IP_AD;
+//DIGITAL_INPUT IP_Assists;
+//DIGITAL_INPUT IP_Audio;
+/*DIGITAL_INPUT IP_AudioMixDown;
+DIGITAL_INPUT IP_AudioMixUp;
+DIGITAL_INPUT IP_AudioQualityMode;
+DIGITAL_INPUT IP_BS;
+DIGITAL_INPUT IP_BSCS;*/
+//DIGITAL_INPUT IP_ClosedCaption;
+//DIGITAL_INPUT IP_CS;
+/*DIGITAL_INPUT IP_Ddata;
+DIGITAL_INPUT IP_DemoMode;
+DIGITAL_INPUT IP_DemoSurround;
+DIGITAL_INPUT IP_Digital;
+DIGITAL_INPUT IP_DigitalToggle;*/
+//DIGITAL_INPUT IP_DOT;
+//DIGITAL_INPUT IP_DUX;
+/*DIGITAL_INPUT IP_EPG;
+DIGITAL_INPUT IP_FlashMinus;
+DIGITAL_INPUT IP_FlashPlus;
+DIGITAL_INPUT IP_FootballMode;
+DIGITAL_INPUT IP_Forward;
+DIGITAL_INPUT IP_Guide;*/
+//DIGITAL_INPUT IP_Help;
+//DIGITAL_INPUT IP_iManual;
+//DIGITAL_INPUT IP_Jump;
+/*DIGITAL_INPUT IP_Media;
+DIGITAL_INPUT IP_MediaAudioTrack;
+DIGITAL_INPUT IP_Mode3D;*/
+//DIGITAL_INPUT IP_Netflix;
+//DIGITAL_INPUT IP_Next;
+//DIGITAL_INPUT IP_OneTouchTimeRec;
+//DIGITAL_INPUT IP_OneTouchView;
 /*DIGITAL_INPUT IP_PAP;
 DIGITAL_INPUT IP_Pause;
 DIGITAL_INPUT IP_PhotoFrame;
@@ -231,11 +255,8 @@ DIGITAL_INPUT IP_PicOff;
 DIGITAL_INPUT IP_PictureMode;
 DIGITAL_INPUT IP_PictureOff;
 DIGITAL_INPUT IP_Play;
-DIGITAL_INPUT IP_PopUpMenu;
-DIGITAL_INPUT IP_PowerOff;
 DIGITAL_INPUT IP_Prev;
 DIGITAL_INPUT IP_Rec;
-DIGITAL_INPUT IP_Red;
 DIGITAL_INPUT IP_Rewind;
 DIGITAL_INPUT IP_ShopRemoteControlForcedDynamic;
 DIGITAL_INPUT IP_Sleep;
@@ -245,22 +266,9 @@ DIGITAL_INPUT IP_SubTitle;
 DIGITAL_INPUT IP_SyncMenu;
 DIGITAL_INPUT IP_Teletext;
 DIGITAL_INPUT IP_TenKey;*/
-DIGITAL_INPUT IP_TopMenu;
-//DIGITAL_INPUT IP_Tv;
-DIGITAL_INPUT IP_Tv_Radio;
-DIGITAL_INPUT IP_TvAnalog;
-DIGITAL_INPUT IP_TvAntennaCable;
-DIGITAL_INPUT IP_TvInput;
-DIGITAL_INPUT IP_TvPower;
-DIGITAL_INPUT IP_TvSatellite;
-DIGITAL_INPUT IP_Video1;
-DIGITAL_INPUT IP_Video2;
-DIGITAL_INPUT IP_VolumeDown;
-DIGITAL_INPUT IP_VolumeUp;
-/*DIGITAL_INPUT IP_WakeUp;
-DIGITAL_INPUT IP_Wide;
+/*DIGITAL_INPUT IP_Wide;
 DIGITAL_INPUT IP_WirelessSubwoofer;
-DIGITAL_INPUT IP_Yellow;*/
+*/
 
 
 STRING_OUTPUT	ERR_MSG$;	
@@ -307,72 +315,90 @@ FUNCTION Send(string str)
   Event Handlers
 *******************************************************************************************/
 
+Release Hotel
+{
+	Send(Display);
+	Send(Mute);
+	Send(VolumeUp);
+	Send(Home);
+}
+
+
+RELEASE IP_PowerOff
+{
+	Send(PowerOff);	
+}
+
+RELEASE IP_TVPower
+{
+	Send(TvPower);
+}
+
 RELEASE IP_ActionMenu
-{ // 
+{ 
+	Send(ActionMenu);
 }
 
 RELEASE IP_Analog
-{ // 
+{ 
+	Send(Analog);
 }
 
 RELEASE IP_Analog2
-{ // 
+{
+	 Send(Analog2);
+
 }
 
 RELEASE IP_AnalogRgb1
-{ // 
+{
+	 Send(AnalogRgb1);
+
 }
 
 RELEASE IP_ChannelDown
-{ // 
+{
+	 Send(ChannelDown);
+
+	 
 }
 
 RELEASE IP_ChannelUp
-{ // 
-}
-
-RELEASE IP_ClosedCaption
-{ // 
+{
+	Send(ChannelUp);
 }
 
 RELEASE IP_Component1
-{ // 
+{
+	 Send(Component1);
+
 }
 
 RELEASE IP_Component2
-{ // 
+{
+	 Send(Component2);
 }
 
 RELEASE IP_Confirm
-{ // 
-}
+{
+	 Send(Confirm);
 
-RELEASE IP_CursorDown
-{ // 
-}
-
-RELEASE IP_CursorLeft
-{ // 
-}
-
-RELEASE IP_CursorRight
-{ // 
-}
-
-RELEASE IP_CursorUp
-{ // 
 }
 
 RELEASE IP_Display
-{ // 
+{
+	 Send(Display);
+
 }
 
 RELEASE IP_DpadCenter
-{ // 
+{
+	 Send(DpadCenter);
 }
 
 RELEASE IP_Enter
-{ // 
+{
+	Send(Enter);
 }
 
 RELEASE IP_HDMI1
@@ -396,131 +422,174 @@ RELEASE IP_HDMI4
 }
 
 RELEASE IP_Home
-{ // 
+{
+	Send(Home);
 }
 
 RELEASE IP_InputButton
-{ // 
+{
+	 Send(InputButton);
+
 }
 
 RELEASE IP_KeypadDown
-{ // 
+{
+	 Send(KeypadDown);
+
 }
 
 RELEASE IP_KeypadExit
-{ // 
+{
+	 Send(KeypadExit);
+
 }
 
 RELEASE IP_KeypadLeft
-{ // 
+{
+	 Send(KeypadLeft);
+
 }
 
 RELEASE IP_KeypadReturn
-{ // 
+{
+	Send(KeypadReturn); 
 }
 
 RELEASE IP_KeypadRight
-{ // 
+{
+	 Send(KeypadRight);
+
 }
 
 RELEASE IP_KeypadUp
-{ // 
+{
+	 Send(KeypadUp);
+
 }
 
 RELEASE IP_Mute
-{ // 
+{
+	 Send(Mute);
+
 }
 
 RELEASE IP_Num0
-{ // 
+{
+	 Send(Num0);
+
 }
 
 RELEASE IP_Num1
-{ // 
-}
-
-RELEASE IP_Num11
-{ // 
-}
-
-RELEASE IP_Num12
-{ // 
+{
+	Send(Num1);
+	 
 }
 
 RELEASE IP_Num2
-{ // 
+{
+	Send(Num2);
+	 
 }
 
 RELEASE IP_Num3
-{ // 
+{
+	Send(Num3);
+	 
 }
 
 RELEASE IP_Num4
-{ // 
+{
+	Send(Num4);
+	 
 }
 
 RELEASE IP_Num5
-{ // 
+{
+	Send(Num5);
+	 
 }
 
 RELEASE IP_Num6
-{ // 
+{
+	Send(Num6);
+	 
 }
 
 RELEASE IP_Num7
-{ // 
+{
+	Send(Num7);
+	 
 }
 
 RELEASE IP_Num8
-{ // 
+{
+	Send(Num8);
+	 
 }
 
 RELEASE IP_Num9
-{ // 
-}
-
-RELEASE IP_OneTouchView
-{ // 
+{
+	Send(Num9);
+	 
 }
 
 RELEASE IP_Options
-{ // 
+{
+	 Send(Options);
+
 }
 
 RELEASE IP_TopMenu
-{ // 
+{
+	 Send(TopMenu);
+
 }
 
 RELEASE IP_Tv_Radio
-{ // 
+{
+	 Send(Tv_Radio);
+
 }
 
 RELEASE IP_TvAnalog
-{ // 
+{
+	 Send(TvAnalog);
+
 }
 
 RELEASE IP_TvAntennaCable
-{ // 
+{
+	 Send(TvAntennaCable);
+
 }
 
 RELEASE IP_TvInput
-{ // 
+{
+	 Send(TvInput);
+
 }
 
 RELEASE IP_TvPower
-{ // 
+{
+	 Send(TvPower);
 }
 
 RELEASE IP_TvSatellite
-{ // 
+{
+	 Send(TvSatellite);
+
 }
 
 RELEASE IP_Video1
-{ // 
+{
+	 Send(Video1);
+
 }
 
 RELEASE IP_Video2
-{ // 
+{
+	 Send(Video2);
+
 }
 
 RELEASE IP_VolumeDown
@@ -560,5 +629,3 @@ Function Main()
 	WaitForInitializationComplete();
 	Init();
 }
-
-
