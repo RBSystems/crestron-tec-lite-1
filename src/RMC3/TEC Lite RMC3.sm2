@@ -1988,32 +1988,45 @@ Mx12=0
 [
 ObjTp=Bw
 H=1
-Lx=-47
-Ly=970
-Rx=935
-Ry=1840
+Lx=0
+Ly=0
+Rx=982
+Ry=1196
 Xm=-1
 Ym=-1
-SH=185
+SH=290
 Z=100
-P=11611
 Ht=4
-Hi=530
+Hi=6
 ]
 [
 ObjTp=Bw
 H=1
-Lx=62
-Ly=1460
-Rx=749
-Ry=2132
+Lx=20
+Ly=160
+Rx=280
+Ry=360
 Xm=-1
 Ym=-1
-SH=45
+SH=371
 Z=100
-P=4401
-Ht=4
-Hi=199
+Ht=1
+Hi=1
+]
+[
+ObjTp=Bw
+H=1
+Lx=0
+Ly=1196
+Rx=982
+Ry=2392
+Xm=-1
+Ym=-1
+SH=419
+Z=100
+P=336
+Ht=1
+Hi=53
 ]
 [
 ObjTp=Bw
@@ -5487,7 +5500,7 @@ ObjVer=1
 PrH=67
 CF=2
 Cmn1=Display Buffers\\
-mC=15
+mC=14
 C1=219
 C2=230
 C3=69
@@ -5500,9 +5513,8 @@ C9=74
 C10=75
 C11=76
 C12=77
-C13=290
-C14=300
-C15=327
+C13=300
+C14=327
 ]
 [
 ObjTp=Sm
@@ -14831,7 +14843,7 @@ ObjVer=1
 PrH=219
 CF=2
 Cmn1=Sony 4K
-mC=19
+mC=20
 C1=433
 C2=434
 C3=297
@@ -14851,6 +14863,7 @@ C16=381
 C17=419
 C18=403
 C19=436
+C20=290
 ]
 [
 ObjTp=Sm
@@ -15022,67 +15035,65 @@ H=290
 SmC=20
 Nm=Buffer
 ObjVer=1
-PrH=68
+PrH=281
 CF=2
-n1I=27
-n1O=26
+n1I=26
+n1O=25
 Cmn1=Sony 4K\\
-mI=27
+mI=26
 I1=688
-I2=1038
+I2=100
 I3=186
 I4=779
 I5=780
 I6=781
-I7=187
-I8=107
-I9=4
-I10=27
-I11=9
-I12=12
-I13=5
-I14=1276
-I15=1278
-I16=1279
-I17=1280
-I18=547
-I19=1035
-I20=47
-I21=1219
-I22=1149
-I23=71
-I24=1871
-I25=1872
-I26=1876
-I27=1932
-mO=26
-tO=26
-O1=232
-O2=1864
-O3=1865
-O4=1868
-O5=1870
-O6=234
-O7=1131
-O8=89
-O9=1073
-O10=1105
-O11=1106
-O12=1131
-O13=6
+I7=107
+I8=4
+I9=27
+I10=9
+I11=12
+I12=5
+I13=1276
+I14=1278
+I15=1279
+I16=1280
+I17=547
+I18=1035
+I19=47
+I20=1219
+I21=1149
+I22=71
+I23=1871
+I24=1872
+I25=1876
+I26=1932
+mO=25
+tO=25
+O1=1975
+O2=1935
+O3=1957
+O4=1958
+O5=1959
+O6=1131
+O7=89
+O8=1073
+O9=1105
+O10=1106
+O11=1131
+O12=6
+O13=89
 O14=89
-O15=89
-O16=1035
-O17=1131
-O18=1049
-O19=1131
-O20=1149
-O21=1132
-O22=232
-O23=233
-O24=1026
-O25=1193
-O26=1194
+O15=1035
+O16=1131
+O17=1049
+O18=1131
+O19=1149
+O20=1132
+O21=232
+O22=233
+O23=1026
+O24=1193
+O25=1194
 ]
 [
 ObjTp=Sm
@@ -17437,7 +17448,7 @@ n1I=5
 n1O=1
 Cmn1=Sony Input Selected
 mI=5
-I1=234
+I1=1038
 I2=233
 I3=1026
 I4=1193
@@ -19514,7 +19525,7 @@ CedH=19
 ObjTp=Sm
 H=441
 SmC=2942
-Nm=TEC Lite TSW-750_SonyRemote_Button List Vertical.ced
+Nm=TEC Lite TSW-750_SonyRemote_Sony 4K Inputs.ced
 ObjVer=1
 PrH=185
 CF=2
@@ -19656,7 +19667,7 @@ CedH=25
 ObjTp=Sm
 H=447
 SmC=2942
-Nm=TEC Lite TSW-750_SonyRemote_Button List Vertical.ced
+Nm=TEC Lite TSW-750_SonyRemote_Sony 4K Inputs.ced
 ObjVer=1
 PrH=182
 CF=2
@@ -20084,9 +20095,9 @@ SmH=441
 CedVer=1
 CedMod=
 GUID=DF852C33-4775-4963-A14E-B9171AA14613
-Hint=Button List Vertical (Smart Object ID=4)
+Hint=Sony 4K Inputs (Smart Object ID=4)
 SGControlType=Button List Vertical
-SGControlName=Button List Vertical
+SGControlName=Sony 4K Inputs
 ]
 [
 ObjTp=CED
@@ -20150,9 +20161,9 @@ SmH=447
 CedVer=1
 CedMod=
 GUID=DF852C33-4775-4963-A14E-B9171AA14613
-Hint=Button List Vertical (Smart Object ID=4)
+Hint=Sony 4K Inputs (Smart Object ID=4)
 SGControlType=Button List Vertical
-SGControlName=Button List Vertical
+SGControlName=Sony 4K Inputs
 ]
 [
 ObjTp=CED
@@ -20469,6 +20480,7 @@ ObjTp=Sg
 H=61
 Nm=Display1_Model_tx$
 SgTp=4
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -25912,7 +25924,7 @@ Nm=Display1_Roomview_Volume_Slider_Press
 [
 ObjTp=Sg
 H=1038
-Nm=//Select_Composite_Input
+Nm=//Select_HDbaseT_Input_fb
 ]
 [
 ObjTp=Sg
@@ -30627,6 +30639,7 @@ ObjTp=Sg
 H=1862
 Nm=Display_IP_Address$
 SgTp=4
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -30648,6 +30661,7 @@ ObjTp=Sg
 H=1866
 Nm=Sony_IP_Err_fb_msg$
 SgTp=4
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -30696,6 +30710,7 @@ ObjTp=Sg
 H=1875
 Nm=Sony_IP_rx$
 SgTp=4
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -30719,6 +30734,7 @@ ObjTp=Sg
 H=1879
 Nm=DSP_IP_Address$
 SgTp=4
+SgTf=Yes
 ]
 [
 ObjTp=Sg
@@ -31202,7 +31218,7 @@ Nm=//Sony_IP_Tv_Satellite
 [
 ObjTp=Sg
 H=1975
-Nm=//Sony_IP_Video1
+Nm=Sony_IP_Video1
 ]
 [
 ObjTp=Sg
