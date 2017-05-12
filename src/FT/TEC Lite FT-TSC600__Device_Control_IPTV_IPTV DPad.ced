@@ -4,7 +4,7 @@ Sgntr=FlashComposite
 ;Increment this version when CED file format changes
 RelVrs=3
 IntStrVrs=1
-VTProeVer=6.1.03
+VTProeVer=6.1.04
 ]
 [
 ObjTp=Symbol
@@ -13,7 +13,7 @@ Hint=IPTV DPad (Smart Object ID=43)
 Code=2
 SGControlType=DPad
 SGControlName=IPTV DPad
-GUID=01387D99-1CB3-4C5D-896B-1626D0E017AE
+GUID=BA91117E-4D00-47FF-A930-412A12AAA162
 SmplCName=TEC Lite FT-TSC600__Device_Control_IPTV_IPTV DPad.ced
 SMWRev=4.02.19
 Expand=expand_random

@@ -176,6 +176,8 @@
   SymJam=NonExclusive
   FileName=Metrics.ush
   SIMPLPlusModuleEncoding=0
+  clz1=SimplSharpNetUtils
+  clz2=SimplSharpStringUtils
 [END]
 [BEGIN]
   ObjTp=Dp

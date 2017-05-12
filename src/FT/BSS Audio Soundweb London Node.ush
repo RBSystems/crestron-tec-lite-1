@@ -75,6 +75,8 @@
   SymJam=NonExclusive
   FileName=BSS Audio Soundweb London Node.ush
   SIMPLPlusModuleEncoding=0
+  clz1=SimplSharpNetUtils
+  clz2=SimplSharpStringUtils
 [END]
 [BEGIN]
   ObjTp=Dp

@@ -1,0 +1,7 @@
+<Device Model="TPCS-4SMD.">
+   <Network Type="Cresnet" Id="01"/>
+   <Network Type="Ethernet" Id="02">
+      <Device Model="TPMC-4SMD" DeviceId="04"/>
+      <Device Model="RoomView SE/RoomView 7.2" DeviceId="0C"/>
+   </Network>
+</Device>

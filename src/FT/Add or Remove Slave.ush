@@ -21,7 +21,7 @@
   SmplCName=Add or Remove Slave.usp
   Code=1
   SysRev5=3.090
-  SMWRev=2.02.05
+  SMWRev=3.00.00
   InputCue1=Add_Slave
   InputSigType1=Digital
   InputCue2=Remove_Slave
@@ -97,6 +97,8 @@
   SymJam=NonExclusive
   FileName=Add or Remove Slave.ush
   SIMPLPlusModuleEncoding=0
+  clz1=SimplSharpNetUtils
+  clz2=SimplSharpStringUtils
 [END]
 [BEGIN]
   ObjTp=Dp

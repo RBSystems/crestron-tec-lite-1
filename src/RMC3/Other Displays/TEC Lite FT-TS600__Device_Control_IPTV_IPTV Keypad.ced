@@ -4,7 +4,7 @@ Sgntr=FlashComposite
 ;Increment this version when CED file format changes
 RelVrs=3
 IntStrVrs=1
-VTProeVer=6.1.03
+VTProeVer=6.1.04
 ]
 [
 ObjTp=Symbol
@@ -13,7 +13,7 @@ Hint=IPTV Keypad (Smart Object ID=42)
 Code=3
 SGControlType=Simple Keypad
 SGControlName=IPTV Keypad
-GUID=5EC76A43-61E4-4AAC-A6B7-40FFDC5737D4
+GUID=154ACE2F-7E21-4877-BBD8-02E0E47712C1
 SmplCName=TEC Lite FT-TS600__Device_Control_IPTV_IPTV Keypad.ced
 SMWRev=4.02.19
 Expand=expand_random

@@ -67,6 +67,8 @@
   SymJam=NonExclusive
   FileName=Volume Press and Hold.ush
   SIMPLPlusModuleEncoding=0
+  clz1=SimplSharpNetUtils
+  clz2=SimplSharpStringUtils
 [END]
 [BEGIN]
   ObjTp=Dp

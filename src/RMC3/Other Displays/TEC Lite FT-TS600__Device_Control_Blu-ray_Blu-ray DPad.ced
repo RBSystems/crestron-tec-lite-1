@@ -4,7 +4,7 @@ Sgntr=FlashComposite
 ;Increment this version when CED file format changes
 RelVrs=3
 IntStrVrs=1
-VTProeVer=6.1.03
+VTProeVer=6.1.04
 ]
 [
 ObjTp=Symbol
@@ -13,7 +13,7 @@ Hint=Blu-ray DPad (Smart Object ID=41)
 Code=1
 SGControlType=DPad
 SGControlName=Blu-ray DPad
-GUID=A49845BD-B2A7-4861-8479-E040D7A9B9FE
+GUID=2CEBF0E5-CF10-45F8-980B-4FAA67E01A1E
 SmplCName=TEC Lite FT-TS600__Device_Control_Blu-ray_Blu-ray DPad.ced
 SMWRev=4.02.19
 Expand=expand_random
