@@ -144,6 +144,33 @@ FUNCTION getVolumeValues(){
 	}*/
 }
 
+FUNCTION powerStatus(){
+	string status[16];
+	Trace("getPowerStatus rx: %s",rx);
+	
+	body = "{ \"id\": 50, \"method\": \"getPowerStatus\", \"params\": [], \"version\": \"1.0\" }";
+	sendMessage("system", body);	
+	status = stringUtility.SonyResult(rx,"status");
+	parsedResponse = status;
+	RX$=status;
+	TRACE("status: %s",status);
+	
+	if ( status = "\"active\""){
+		
+		TRACE("status equated to \"active\",%s",status);
+
+		powerIsOn = 1;
+	}
+	else {
+		
+		TRACE("status equated to something other than active,%s",status);
+
+    	powerIsOn = 0;
+	}
+}
+
+
+
 ///////////////
 // API Method Events
 ///////////////
@@ -161,27 +188,37 @@ RELEASE blankDisplay
 {
 	body = "{ \"id\": 55, \"method\": \"setPowerStatus\", \"params\": [{\"status\": false}],\"version\": \"1.0\" }";
 	sendMessage("system", body);
+	wait(10)
+		powerStatus();
 }
 
 RELEASE switchToHDMI1
 {
 	body = "{ \"id\": 101, \"method\": \"setPlayContent\", \"params\": [{\"uri\": \"extInput:hdmi?port=1\"}], \"version\": \"1.0\" }";
 	sendMessage("avContent",body);
+	wait(10)
+		powerStatus();
 }
 RELEASE switchToHDMI2
 {
 	body = "{ \"id\": 101, \"method\": \"setPlayContent\", \"params\": [{\"uri\": \"extInput:hdmi?port=2\"}], \"version\": \"1.0\" }";
 	sendMessage("avContent",body);
+	wait(10)
+		powerStatus();
 }
 RELEASE switchToHDMI3
 {
 	body = "{ \"id\": 101, \"method\": \"setPlayContent\", \"params\": [{\"uri\": \"extInput:hdmi?port=3\"}], \"version\": \"1.0\" }";
 	sendMessage("avContent",body);
+	wait(10)
+		powerStatus();
 }
 RELEASE switchToHDMI4
 {
 	body = "{ \"id\": 101, \"method\": \"setPlayContent\", \"params\": [{\"uri\": \"extInput:hdmi?port=4\"}], \"version\": \"1.0\" }";
 	sendMessage("avContent",body);
+	wait(10)
+		powerStatus();
 }
 
 RELEASE getSchemeList // Gets list of input types the display can handle
@@ -218,25 +255,32 @@ RELEASE getPowerSavingMode // Provides setting of power saving mode
  {
 	body = "{ \"id\": 51, \"method\": \"getPowerSavingMode\", \"params\": [], \"version\": \"1.0\" }";
 	sendMessage("system", body);
+	wait(10)
+		powerStatus();
  }
 RELEASE getPowerStatus // Gets current power status of display
  {	
-	body = "{ \"id\": 50, \"method\": \"getPowerStatus\", \"params\": [], \"version\": \"1.0\" }";
-	sendMessage("system", body);	
-	parsedMessage = stringUtility.SonyResult(rx,"status");
-	Print("Simpl+ Print: %s", parsedMessage);
-	parsedResponse = parsedMessage;
+	//body = "{ \"id\": 50, \"method\": \"getPowerStatus\", \"params\": [], \"version\": \"1.0\" }";
+	//sendMessage("system", body);	
+	//parsedMessage = stringUtility.SonyResult(rx,"status");
+	//Print("Simpl+ Print: %s", parsedMessage);
+	//parsedResponse = parsedMessage;
+	powerStatus();
 
 }
 RELEASE powerOnDisplay
 {
 	body = "{ \"id\": 55, \"method\": \"setPowerStatus\", \"params\": [{\"status\": true}],\"version\": \"1.0\" }";
 	sendMessage("system", body);
+	wait(10)
+		powerStatus();
 }
 RELEASE powerOffDisplay
 {
 	body = "{ \"id\": 55, \"method\": \"setPowerStatus\", \"params\": [{\"status\": false}],\"version\": \"1.0\" }";
 	sendMessage("system", body);
+	wait(10)
+		powerStatus();
 }
 
 /*RELEASE getSourceList // Gets valid source types for a scheme
