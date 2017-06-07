@@ -5,7 +5,7 @@
 /*
 Dealer Name: Brigham Young University
 System Name: Sony Display IP Controller
-System Number: 1.2.20
+System Number: 1.2.21
 Programmer: Dan Clegg
 Comments: Communicate with Sony Flat-panel (FWD or XBR) displays
 */
@@ -111,6 +111,13 @@ FUNCTION sendMessage(string resource, string body) {
 	}
 }
 
+FUNCTION unblank()
+{
+	body = "{ \"method\": \"setPowerSavingMode\", \"id\": 52, \"params\": [{\"mode\": \"off\"}], \"version\": \"1.0\" }";
+	sendMessage("system",body);
+	wait(10);
+}
+
 FUNCTION getVolumeValues(){
 	string status[16],speaker[4],headphone[4];
 	//integer placeToReturn,numOfReturnedVolumes;
@@ -159,27 +166,32 @@ PUSH pingHost
 
 RELEASE blankDisplay
 {
-	body = "{ \"id\": 55, \"method\": \"setPowerStatus\", \"params\": [{\"status\": false}],\"version\": \"1.0\" }";
+	//body = "{ \"id\": 55, \"method\": \"setPowerStatus\", \"params\": [{\"status\": false}],\"version\": \"1.0\" }";
+	body = "{ \"method\": \"setPowerSavingMode\", \"id\": 52, \"params\": [{\"mode\": \"pictureOff\"}], \"version\": \"1.0\" }";
 	sendMessage("system", body);
 }
 
 RELEASE switchToHDMI1
 {
+	unblank();
 	body = "{ \"id\": 101, \"method\": \"setPlayContent\", \"params\": [{\"uri\": \"extInput:hdmi?port=1\"}], \"version\": \"1.0\" }";
 	sendMessage("avContent",body);
 }
 RELEASE switchToHDMI2
 {
+	unblank();
 	body = "{ \"id\": 101, \"method\": \"setPlayContent\", \"params\": [{\"uri\": \"extInput:hdmi?port=2\"}], \"version\": \"1.0\" }";
 	sendMessage("avContent",body);
 }
 RELEASE switchToHDMI3
 {
+	unblank();
 	body = "{ \"id\": 101, \"method\": \"setPlayContent\", \"params\": [{\"uri\": \"extInput:hdmi?port=3\"}], \"version\": \"1.0\" }";
 	sendMessage("avContent",body);
 }
 RELEASE switchToHDMI4
 {
+	unblank();
 	body = "{ \"id\": 101, \"method\": \"setPlayContent\", \"params\": [{\"uri\": \"extInput:hdmi?port=4\"}], \"version\": \"1.0\" }";
 	sendMessage("avContent",body);
 }
