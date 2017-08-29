@@ -2087,6 +2087,20 @@ Mx15=0
 [
 ObjTp=Bw
 H=1
+Lx=40
+Ly=40
+Rx=1821
+Ry=1201
+Xm=-1
+Ym=-1
+SH=453
+Z=100
+Ht=1
+Hi=1
+]
+[
+ObjTp=Bw
+H=1
 Lx=374
 Ly=30
 Rx=1698
@@ -5758,7 +5772,7 @@ Nm=SUBSYSTEM
 ObjVer=1
 SmVr=1038
 PrH=4
-CF=1
+CF=2
 Cmn1=Display Controls
 mC=17
 C1=68
@@ -5787,7 +5801,7 @@ Nm=SUBSYSTEM
 ObjVer=1
 SmVr=1038
 PrH=67
-CF=1
+CF=2
 Cmn1=Display Buffers\\
 mC=15
 C1=219
@@ -13246,7 +13260,7 @@ Nm=SUBSYSTEM
 ObjVer=1
 SmVr=1038
 PrH=68
-CF=1
+CF=2
 Cmn1=Display1\\
 mC=2
 C1=220
@@ -15489,7 +15503,7 @@ Nm=SUBSYSTEM
 ObjVer=1
 SmVr=1038
 PrH=219
-CF=1
+CF=2
 Cmn1=Sony 4K
 mC=29
 C1=432
@@ -20734,7 +20748,7 @@ SmC=103
 Nm=sony-api-control.usp
 ObjVer=1
 PrH=281
-CF=1
+CF=2
 n1I=40
 n2I=10
 n1O=10
@@ -20750,7 +20764,7 @@ I8=2173
 I9=2172
 I10=2103
 I11=2171
-I12=1867
+I12=4
 I13=1938
 I14=2107
 I15=2170
@@ -20785,15 +20799,20 @@ O1=2112
 O2=2071
 O3=2105
 O4=2109
-O6=1325
+O5=2097
+O6=1945
 O7=2180
-O9=2165
+O9=1325
+O10=2165
 O11=2114
 O12=2113
 O13=15
+O14=133
 O15=2166
-O17=2100
-O18=2168
+O17=2099
+O18=2100
+O19=2167
+O20=2168
 mP=1
 P1=
 ]
@@ -28528,7 +28547,7 @@ Nm=Show_Display_Off_Page
 [
 ObjTp=Sg
 H=1325
-Nm=//Display1_Power
+Nm=//Display1_Sony_IP_Control_In_Err_State
 ]
 [
 ObjTp=Sg
@@ -32834,6 +32853,11 @@ Nm=Sony_IP_Volume_Down
 ]
 [
 ObjTp=Sg
+H=2097
+Nm=Sony_IP_Display_Blank_fb
+]
+[
+ObjTp=Sg
 H=2098
 Nm=//Program_Volume_Mute_On_fb
 ]
@@ -33185,8 +33209,14 @@ SgTp=4
 ]
 [
 ObjTp=Sg
-H=2168
+H=2167
 Nm=//Display1_Parsed_Response
+SgTp=4
+]
+[
+ObjTp=Sg
+H=2168
+Nm=//Display1_Active_Source_Label
 SgTp=4
 ]
 [
