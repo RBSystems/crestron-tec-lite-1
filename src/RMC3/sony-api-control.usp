@@ -5,11 +5,11 @@
 /*
 Dealer Name: Brigham Young University
 System Name: Sony Display IP Controller
-System Number: 1.2.24 
+System Number: 1.3.0 
 Programmer: Dan Clegg
 Comments: Communicate with Sony Flat-panel (FWD or XBR) displays
 
-Version Update: Extending wait on blank function.
+Version Update: Added Mute and Unmute
 */
 
 /*******************************************************************************************
@@ -363,7 +363,24 @@ FUNCTION getStatus(){
 	}
 }
 
+FUNCTION mute()
+{
+	Log("Mute Function Called");
+	body = "{ \"method \": \"setAudioMute \", \"id \": 601, \"params \": [{ \"status \": true}],  \"version \":  \"1.0 \" }";
+	sendMessage("audio", body);
 
+	wait(10)
+		getVolumeValues();
+}
+
+FUNCTION unmute(){
+	Log("Unmute Function Called");
+	body = "{ \"method \": \"setAudioMute \", \"id \": 601, \"params \": [{ \"status \": false}],  \"version \":  \"1.0 \" }";
+	sendMessage("audio", body);
+
+	wait(10)
+		getVolumeValues();
+}
 
 FUNCTION powerOn()
 {
@@ -383,6 +400,7 @@ FUNCTION blank()
 	{
 		body = "{ \"method\": \"setPowerSavingMode\", \"id\": 52, \"params\": [{\"mode\": \"pictureOff\"}], \"version\": \"1.0\" }";
 		sendMessage("system",body);
+		mute();
 		Busy();
 		wait(350)
 		{
@@ -400,6 +418,7 @@ FUNCTION unblank()
 	{
 		body = "{ \"method\": \"setPowerSavingMode\", \"id\": 52, \"params\": [{\"mode\": \"off\"}], \"version\": \"1.0\" }";
 		sendMessage("system",body);
+		unmute();
 		Busy();
 		wait(350)
 		{
@@ -435,13 +454,7 @@ PUSH pingHost
 
 RELEASE blankDisplay
 {
-	blank();
-	/*body = "{ \"id\": 52, \"method\": \"setPowerSavingMode\", \"params\": [{\"mode\": \"pictureOff\"}], \"version\": \"1.0\" }";
-	sendMessage("system", body);
-	wait(10){
-		powerStatus();
-		powerSavingsMode();
-	}*/
+	blank();	
 }
 
 RELEASE switchToHDMI1
@@ -582,17 +595,11 @@ RELEASE requestReboot // Reboot a Device !!!!!!!!DANGER WILL ROBINSON!!!!!!!!!!!
  }
 RELEASE muteAudio // Change Audio Mute Status
  {
-	body = "{ \"id\": 601, \"method\": \"setAudioMute\", \"params\": [{\"status\": true}], \"version\": \"1.0\"}";
-	sendMessage("audio", body);
-	wait(10)
-		getVolumeValues();
+	mute();
  }
 RELEASE unmuteAudio
 {
-     body = "{ \"id\": 601, \"method\": \"setAudioMute\", \"params\": [{\"status\": false}], \"version\": \"1.0\"}";
-	sendMessage("audio", body);
-	wait(10)
-		getVolumeValues();
+	unmute();
 }
 RELEASE setAudioVolumeToValue // Set the volume to an explicit value
 {
