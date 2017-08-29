@@ -29,7 +29,7 @@ Version Update: Added Mute and Unmute
   DIGITAL_INPUT, ANALOG_INPUT, STRING_INPUT, BUFFER_INPUT inputs and DIGITAL_OUTPUT,
   ANALOG_OUTPUT, STRING_OUTPUT and SERIAL_OUTPUT outputs
 *******************************************************************************************/
-DIGITAL_INPUT enable, getApiInfo, getVolumeValue,getSchemeList,getCurrentExternalInputsStatus,getInterfaceInformation,getLEDIndicatorStatus,getNetworkSettings,getPlayingContentInfo,getPowerSavingMode,getPowerStatus,powerOnDisplay,powerOffDisplay,getSystemInformation,getSystemSupportedFunction,getWolMode,requestReboot,muteAudio,unmuteAudio,setAudioVolumeToValue,incrementVolume,decrementVolume,setPlayContent,setPlayTvContent,pingHost;
+DIGITAL_INPUT enable, getApiInfo, getVolumeValue,getSchemeList,getCurrentExternalInputsStatus,getInterfaceInformation,getLEDIndicatorStatus,getNetworkSettings,getPlayingContentInfo,getPowerSavingMode,getPowerStatus,powerOnDisplay,powerOffDisplay,getSystemInformation,getSystemSupportedFunction,getWolMode,requestReboot,muteAudio,unmuteAudio,setAudioVolumeToValue,incrementVolume,decrementVolume,setPlayContent,setPlayTvContent,pingHost,getMuteStatus;
 DIGITAL_INPUT _skip_,_skip_,_skip_,_skip_,_skip_;
 DIGITAL_INPUT blankDisplay,switchToHDMI1, switchToHDMI2, switchToHDMI3, switchToHDMI4, _skip_,_skip_,_skip_,audioConfiguredAsHeadphone,audioConfiguredAsSpeaker;
 
@@ -117,6 +117,44 @@ FUNCTION sendMessage(string resource, string body) {
 		result = client.SendCommand(URL, revisedString, body, PSK);
 		Trace("result %ld",result);
 	}
+}
+
+FUNCTION getMuteValue(){
+	string status[16],speakerMute[5],headphoneMute[5],mute[16];
+	SIGNED_INTEGER muteOn;
+
+	Log("Get Mute Value Function Called");
+
+	body = "{ \"id\": 33, \"method\": \"getVolumeInformation\", \"params\": [], \"version\": \"1.0\"}";
+	sendMessage("audio", body);	
+	mute = stringUtility.SonyResult(rx,"mute");
+	parsedResponse = mute;
+	speakerMute = stringUtility.GetMemberOfStringArray(mute,",",0);
+	headphoneMute = stringUtility.GetMemberOfStringArray(mute,",",1);
+
+	RX$=status;
+
+	if (headphoneAudio = 1) {
+		muteOn = CompareStringsNoCase(headphoneMute,"true");
+		if (muteOn = 0){
+			volumeIsMuted = 1;
+		}
+		else {
+     		volumeIsMuted = 0;
+		}
+
+	}
+	else {
+		muteOn = CompareStringsNoCase(speakerMute,"true");
+		if (muteOn = 0){
+			volumeIsMuted = 1;
+		}
+		else {
+     		volumeIsMuted = 0;
+		}
+
+	}
+	Trace("speaker: %s, headphone: %s",speakerMute, headphoneMute);
 }
 
 
@@ -370,7 +408,7 @@ FUNCTION mute()
 	sendMessage("audio", body);
 
 	wait(10)
-		getVolumeValues();
+		getMuteValue();
 }
 
 FUNCTION unmute(){
@@ -379,7 +417,7 @@ FUNCTION unmute(){
 	sendMessage("audio", body);
 
 	wait(10)
-		getVolumeValues();
+		getMuteValue();
 }
 
 FUNCTION powerOn()
@@ -450,6 +488,11 @@ PUSH pingHost
 //	pingResult = client.Ping(URL);
 
 //	Log(pingResult);
+}
+
+RELEASE getMuteStatus
+{
+	getMuteValue();
 }
 
 RELEASE blankDisplay
