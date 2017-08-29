@@ -43,7 +43,7 @@ STRING_OUTPUT	SelectedSrcCh$,_skip_,ERR_MSG$,RX$,parsedResponse,activeSource;
 
 DIGITAL_OUTPUT	activeSource_HDMI1,activeSource_HDMI2,activeSource_HDMI3,activeSource_HDMI4,displayBlanked,powerIsOn,volumeIsMuted;
 
-DIGITAL_OUTPUT _SKIP_,ERR, CommErr;
+DIGITAL_OUTPUT _SKIP_,ERR, CommErr, BusySignal;
 
 
 #USER_SIMPLSHARP_LIBRARY "SimplSharpNetUtils"
@@ -77,6 +77,14 @@ Function Log(string msg)
 Function Error(string msg)
 {
 	Log(msg);
+}
+
+Function Busy(){
+	BusySignal = 1;
+}
+
+Function NotBusy(){
+	BusySignal = 0;
 }
 
 /*******************************************************************************************
@@ -375,8 +383,10 @@ FUNCTION blank()
 	{
 		body = "{ \"method\": \"setPowerSavingMode\", \"id\": 52, \"params\": [{\"mode\": \"pictureOff\"}], \"version\": \"1.0\" }";
 		sendMessage("system",body);
+		Busy();
 		wait(350)
 		{
+			NotBusy();
 			powerSavingsMode();
 		}
 	}
@@ -390,8 +400,10 @@ FUNCTION unblank()
 	{
 		body = "{ \"method\": \"setPowerSavingMode\", \"id\": 52, \"params\": [{\"mode\": \"off\"}], \"version\": \"1.0\" }";
 		sendMessage("system",body);
+		Busy();
 		wait(350)
 		{
+			NotBusy();
 			powerSavingsMode();
 		}
 	}
