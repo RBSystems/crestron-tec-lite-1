@@ -5,9 +5,11 @@
 /*
 Dealer Name: Brigham Young University
 System Name: Sony Display IP Controller
-System Number: 1.2.23 
+System Number: 1.2.24 
 Programmer: Dan Clegg
 Comments: Communicate with Sony Flat-panel (FWD or XBR) displays
+
+Version Update: Extending wait on blank function.
 */
 
 /*******************************************************************************************
@@ -373,7 +375,7 @@ FUNCTION blank()
 	{
 		body = "{ \"method\": \"setPowerSavingMode\", \"id\": 52, \"params\": [{\"mode\": \"pictureOff\"}], \"version\": \"1.0\" }";
 		sendMessage("system",body);
-		wait(20)
+		wait(350)
 		{
 			powerSavingsMode();
 		}
@@ -388,7 +390,7 @@ FUNCTION unblank()
 	{
 		body = "{ \"method\": \"setPowerSavingMode\", \"id\": 52, \"params\": [{\"mode\": \"off\"}], \"version\": \"1.0\" }";
 		sendMessage("system",body);
-		wait(10)
+		wait(350)
 		{
 			powerSavingsMode();
 		}
