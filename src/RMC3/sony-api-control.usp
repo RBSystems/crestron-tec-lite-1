@@ -119,6 +119,44 @@ FUNCTION sendMessage(string resource, string body) {
 	}
 }
 
+
+STRING_FUNCTION cleanup(string in){
+	string out[1024];
+
+	out = stringUtility.Replace(in,"\"","");
+	out = stringUtility.Replace(out,":","");
+	out = stringUtility.Replace(out,"=","");
+	out = stringUtility.Trim(out);
+	return(out);
+}  
+
+FUNCTION getVolumeValues(){
+	string status[16],speaker[4],headphone[4],speakerMute[5],headphoneMute[5],mute[16];
+	
+//	Log("Get Volume Values Function Called");
+
+	body = "{ \"id\": 33, \"method\": \"getVolumeInformation\", \"params\": [], \"version\": \"1.0\"}";
+	sendMessage("audio", body);
+	status = stringUtility.SonyResult(rx,"volume");
+
+	parsedResponse = status;
+
+	speaker = stringUtility.GetMemberOfStringArray(status,",",0);
+	headphone = stringUtility.GetMemberOfStringArray(status,",",1);
+
+	RX$=status;
+
+	SpeakerVolumeValue = atoi(speaker) * volumeStepValue;
+	HeadphoneVolumeValue = atoi(headphone) * volumeStepValue;
+	if (headphoneAudio = 1) {
+		volumeToPanel = HeadphoneVolumeValue;
+	}
+	else {
+		volumeToPanel = SpeakerVolumeValue;
+	}
+}
+
+
 FUNCTION getMuteValue(){
 	string status[16],speakerMute[5],headphoneMute[5],mute[16];
 	SIGNED_INTEGER muteOn;
@@ -140,91 +178,30 @@ FUNCTION getMuteValue(){
 
 	if (headphoneAudio = 1) {
 		muteOn = CompareStringsNoCase(headphoneMute,"true");
-//		Trace("muteOn1: %d",muteOn);
 		if (muteOn = 0){
 			volumeIsMuted = 1;
-//			Trace("volumeIsMuted1: %d",volumeIsMuted);
 		}
 		else {
      		volumeIsMuted = 0;
-//			Trace("volumeIsMuted2: %d",volumeIsMuted);
 		}
 
 	}
 	else {
 		muteOn = CompareStringsNoCase(speakerMute,"true");
-//		Trace("muteOn2: %d",muteOn);
 		if (muteOn = 0){
 			volumeIsMuted = 1;
-//			Trace("volumeIsMuted3: %d",volumeIsMuted);
 		}
 		else {
-     		volumeIsMuted = 0;
-//			Trace("volumeIsMuted4: %d",volumeIsMuted);
+     		volumeIsMuted = 0;		
 		}
-
 	}
+
+	// Have to call getVolumeValues to have TP update its state with the volume mute/unmute
+	getVolumeValues();
+
 //	Trace("speaker: %s, headphone: %s",speakerMute, headphoneMute);
 }
-
-
-FUNCTION getVolumeValues(){
-	string status[16],speaker[4],headphone[4],speakerMute[5],headphoneMute[5],mute[16];
-//	SIGNED_INTEGER muteOn;
-	
-	Log("Get Volume Values Function Called");
-
-// Trace("getVolumeValues rx: %s",rx);
-
-	body = "{ \"id\": 33, \"method\": \"getVolumeInformation\", \"params\": [], \"version\": \"1.0\"}";
-	sendMessage("audio", body);
-	status = stringUtility.SonyResult(rx,"volume");
-//	mute = stringUtility.SonyResult(rx,"mute");
-//	speakerMute = stringUtility.GetMemberOfStringArray(mute,",",0);
-//	headphoneMute = stringUtility.GetMemberOfStringArray(mute,",",1);	
-	parsedResponse = status;
-//	place = stringParse.NumberOfMembers(status,","); 
-	speaker = stringUtility.GetMemberOfStringArray(status,",",0);
-	headphone = stringUtility.GetMemberOfStringArray(status,",",1);
-// Trace("speaker: %s",speaker);
-// Trace("headphone: %s", headphone);
-// Trace("status of volume: %s",status);
-	RX$=status;
-	SpeakerVolumeValue = atoi(speaker) * volumeStepValue;
-	HeadphoneVolumeValue = atoi(headphone) * volumeStepValue;
-	if (headphoneAudio = 1) {
-		volumeToPanel = HeadphoneVolumeValue;
-/*		muteOn = CompareStringsNoCase(headphoneMute,"true");
-		if (muteOn = 0){
-			volumeIsMuted = 1;
-		}
-		else {
-     		volumeIsMuted = 0;
-		}
-*/
-	}
-	else {
-		volumeToPanel = SpeakerVolumeValue;
-/*		muteOn = CompareStringsNoCase(speakerMute,"true");
-		if (muteOn = 0){
-			volumeIsMuted = 1;
-		}
-		else {
-     		volumeIsMuted = 0;
-		}
-*/
-	}
-}
-
-STRING_FUNCTION cleanup(string in){
-	string out[1024];
-
-	out = stringUtility.Replace(in,"\"","");
-	out = stringUtility.Replace(out,":","");
-	out = stringUtility.Replace(out,"=","");
-	out = stringUtility.Trim(out);
-	return(out);
-}        
+      
 
 function resetOutputFeedback(){
 //	Log("Reset Output Feedback Function Called");
