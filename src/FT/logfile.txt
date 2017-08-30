@@ -1,0 +1,30 @@
+WARNING(289)  
+        The SMW contains two Smart Graphics symbols with same name [Blu-ray DPad (Smart Object ID=41)]. The symbol in file [C:\Users\dja\Documents\GIT-repo\crestron-tec-lite\src\RMC3\TEC Lite TSW-750.sgd_] will be used. The symbol in file [C:\Users\dja\Documents\GIT-repo\crestron-tec-lite\src\RMC3\TEC Lite TSW-750__Device_Control_Blu-ray_Blu-ray DPad.ced] will NOT be used.
+WARNING(289)  
+        The SMW contains two Smart Graphics symbols with same name [IPTV DPad (Smart Object ID=43)]. The symbol in file [C:\Users\dja\Documents\GIT-repo\crestron-tec-lite\src\RMC3\TEC Lite TSW-750.sgd_] will be used. The symbol in file [C:\Users\dja\Documents\GIT-repo\crestron-tec-lite\src\RMC3\TEC Lite TSW-750__Device_Control_IPTV_IPTV DPad.ced] will NOT be used.
+WARNING(289)  
+        The SMW contains two Smart Graphics symbols with same name [IPTV Keypad (Smart Object ID=42)]. The symbol in file [C:\Users\dja\Documents\GIT-repo\crestron-tec-lite\src\RMC3\TEC Lite TSW-750.sgd_] will be used. The symbol in file [C:\Users\dja\Documents\GIT-repo\crestron-tec-lite\src\RMC3\TEC Lite TSW-750__Device_Control_IPTV_IPTV Keypad.ced] will NOT be used.
+WARNING(108)  
+        [C:\Users\dja\Documents\GIT-repo\crestron-tec-lite\src\RMC3\TEC Lite RMC3.smw] contains User Simpl Plus symbol [StringSaver.usp] at [S-1.2], but the compiled .ush file cannot be found in the User SPlus or Project Dir. Make sure the .usp is in User SPlus or Project dir, then compile via Simpl Plus.
+WARNING(108)  
+        [C:\Users\dja\Documents\GIT-repo\crestron-tec-lite\src\RMC3\TEC Lite RMC3.smw] contains User Simpl Plus symbol [Volume Press and Hold.usp] at [S-9.6], but the compiled .ush file cannot be found in the User SPlus or Project Dir. Make sure the .usp is in User SPlus or Project dir, then compile via Simpl Plus.
+WARNING(108)  
+        [C:\Users\dja\Documents\GIT-repo\crestron-tec-lite\src\RMC3\TEC Lite RMC3.smw] contains User Simpl Plus symbol [BSS Audio Soundweb London Node.usp] at [S-10.6], but the compiled .ush file cannot be found in the User SPlus or Project Dir. Make sure the .usp is in User SPlus or Project dir, then compile via Simpl Plus.
+WARNING(108)  
+        [C:\Users\dja\Documents\GIT-repo\crestron-tec-lite\src\RMC3\TEC Lite RMC3.smw] contains User Simpl Plus symbol [BSS Soundweb London Gain.usp] at [S-10.7.6], but the compiled .ush file cannot be found in the User SPlus or Project Dir. Make sure the .usp is in User SPlus or Project dir, then compile via Simpl Plus.
+WARNING(108)  
+        [C:\Users\dja\Documents\GIT-repo\crestron-tec-lite\src\RMC3\TEC Lite RMC3.smw] contains User Simpl Plus symbol [BSS Soundweb London Gain.usp] at [S-10.8.6], but the compiled .ush file cannot be found in the User SPlus or Project Dir. Make sure the .usp is in User SPlus or Project dir, then compile via Simpl Plus.
+WARNING(108)  
+        [C:\Users\dja\Documents\GIT-repo\crestron-tec-lite\src\RMC3\TEC Lite RMC3.smw] contains User Simpl Plus symbol [BSS Soundweb London Gain.usp] at [S-10.9.6], but the compiled .ush file cannot be found in the User SPlus or Project Dir. Make sure the .usp is in User SPlus or Project dir, then compile via Simpl Plus.
+WARNING(108)  
+        [C:\Users\dja\Documents\GIT-repo\crestron-tec-lite\src\RMC3\TEC Lite RMC3.smw] contains User Simpl Plus symbol [BSS Soundweb London Gain.usp] at [S-10.10.6], but the compiled .ush file cannot be found in the User SPlus or Project Dir. Make sure the .usp is in User SPlus or Project dir, then compile via Simpl Plus.
+WARNING(108)  
+        [C:\Users\dja\Documents\GIT-repo\crestron-tec-lite\src\RMC3\TEC Lite RMC3.smw] contains User Simpl Plus symbol [Add or Remove Slave.usp] at [S-8.5.2], but the compiled .ush file cannot be found in the User SPlus or Project Dir. Make sure the .usp is in User SPlus or Project dir, then compile via Simpl Plus.
+WARNING(108)  
+        [C:\Users\dja\Documents\GIT-repo\crestron-tec-lite\src\RMC3\TEC Lite RMC3.smw] contains User Simpl Plus symbol [Metrics.usp] at [S-11.1], but the compiled .ush file cannot be found in the User SPlus or Project Dir. Make sure the .usp is in User SPlus or Project dir, then compile via Simpl Plus.
+WARNING(108)  
+        [C:\Users\dja\Documents\GIT-repo\crestron-tec-lite\src\RMC3\TEC Lite RMC3.smw] contains User Simpl Plus symbol [TrackCECVolume.usp] at [S-12.6], but the compiled .ush file cannot be found in the User SPlus or Project Dir. Make sure the .usp is in User SPlus or Project dir, then compile via Simpl Plus.
+WARNING(108)  
+        [C:\Users\dja\Documents\GIT-repo\crestron-tec-lite\src\RMC3\TEC Lite RMC3.smw] contains User Simpl Plus symbol [MuteUnmute.usp] at [S-12.7], but the compiled .ush file cannot be found in the User SPlus or Project Dir. Make sure the .usp is in User SPlus or Project dir, then compile via Simpl Plus.
+WARNING(108)  
+        [C:\Users\dja\Documents\GIT-repo\crestron-tec-lite\src\RMC3\TEC Lite RMC3.smw] contains User Simpl Plus symbol [ReportConfig.usp] at [S-2.4.1], but the compiled .ush file cannot be found in the User SPlus or Project Dir. Make sure the .usp is in User SPlus or Project dir, then compile via Simpl Plus.
