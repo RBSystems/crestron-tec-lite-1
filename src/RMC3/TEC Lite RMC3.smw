@@ -3157,7 +3157,7 @@ ObjTp=VTP
 H=3
 DvH=577
 VtpGuid=197D1E46-4D93-46C2-8D65-F2020C2F03AC
-VTPFile=.\Other Displays\TEC Lite FT-TS600.vtp
+VTPFile=.\Other Displays\FT-TS600\TEC Lite FT-TS600.vtp
 VtpVer=3
 TSAddr=06
 ]
