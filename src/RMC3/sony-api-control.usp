@@ -5,11 +5,11 @@
 /*
 Dealer Name: Brigham Young University
 System Name: Sony Display IP Controller
-System Number: 1.3.5
+System Number: 1.3.6
 Programmer: Dan Clegg
 Comments: Communicate with Sony Flat-panel (FWD or XBR) displays
 
-Version Update: 
+Version Update: Fixed mute feedback
 */
 
 /*******************************************************************************************
@@ -133,24 +133,34 @@ FUNCTION getMuteValue(){
 	headphoneMute = stringUtility.GetMemberOfStringArray(mute,",",1);
 
 	RX$=status;
+	
+	Trace("headphone configured: %d",headphoneAudio);
+	Trace("headPhoneMute: %s",headphoneMute);
+	Trace("speakerMute: %s",speakerMute);   
 
 	if (headphoneAudio = 1) {
 		muteOn = CompareStringsNoCase(headphoneMute,"true");
+		Trace("muteOn1: %d",muteOn);
 		if (muteOn = 0){
 			volumeIsMuted = 1;
+			Trace("volumeIsMuted1: %d",volumeIsMuted);
 		}
 		else {
      		volumeIsMuted = 0;
+			Trace("volumeIsMuted2: %d",volumeIsMuted);
 		}
 
 	}
 	else {
 		muteOn = CompareStringsNoCase(speakerMute,"true");
+		Trace("muteOn1: %d",muteOn);
 		if (muteOn = 0){
 			volumeIsMuted = 1;
+			Trace("volumeIsMuted3: %d",volumeIsMuted);
 		}
 		else {
      		volumeIsMuted = 0;
+			Trace("volumeIsMuted4: %d",volumeIsMuted);
 		}
 
 	}
@@ -172,10 +182,6 @@ FUNCTION getVolumeValues(){
 	mute = stringUtility.SonyResult(rx,"mute");
 	speakerMute = stringUtility.GetMemberOfStringArray(mute,",",0);
 	headphoneMute = stringUtility.GetMemberOfStringArray(mute,",",1);	
-// Trace("getVolumeValues status 1: %s",status);
-	
-// Trace("getVolumeValues rx: %s",rx);
-
 	parsedResponse = status;
 //	place = stringParse.NumberOfMembers(status,","); 
 	speaker = stringUtility.GetMemberOfStringArray(status,",",0);
