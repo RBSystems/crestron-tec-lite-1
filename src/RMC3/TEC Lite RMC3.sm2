@@ -2097,7 +2097,7 @@ SH=453
 Z=100
 P=204
 Ht=1
-Hi=36
+Hi=41
 ]
 [
 ObjTp=Bw
@@ -32893,11 +32893,13 @@ Nm=Display_Is_Sony_4K_With_Speaker
 ObjTp=Sg
 H=2118
 Nm=Sony_4K_Speaker_Configured
+SgTf=Yes
 ]
 [
 ObjTp=Sg
 H=2119
 Nm=Sony_4K_Headphone_Configured
+SgTf=Yes
 ]
 [
 ObjTp=Sg
