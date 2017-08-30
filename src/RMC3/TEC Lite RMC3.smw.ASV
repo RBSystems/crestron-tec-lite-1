@@ -3168,8 +3168,8 @@ TSAddr=05
 ObjTp=VTP
 H=3
 DvH=577
-VtpGuid=8C8100A2-0FD4-4F53-82D4-68D8BCE5782C
-VTPFile=.\TEC Lite TSW-750.vtp
+VtpGuid=197D1E46-4D93-46C2-8D65-F2020C2F03AC
+VTPFile=.\Other Displays\TEC Lite FT-TS600.vtp
 VtpVer=3
 TSAddr=06
 ]
@@ -17772,7 +17772,7 @@ tO=5
 ObjTp=Sm
 H=338
 SmC=2942
-Nm=TEC Lite TSW-750__Device_Control_Blu-ray_Blu-ray DPad.ced
+Nm=TEC Lite FT-TS600__Device_Control_Blu-ray_Blu-ray DPad FT-TS600.ced
 ObjVer=1
 PrH=336
 n1I=5
@@ -17784,14 +17784,14 @@ mI=5
 mO=5
 tO=5
 mP=1
-P1=41d
+P1=53d
 CedH=7
 ]
 [
 ObjTp=Sm
 H=339
 SmC=2942
-Nm=TEC Lite TSW-750__Device_Control_IPTV_IPTV DPad.ced
+Nm=TEC Lite FT-TS600__Device_Control_IPTV_IPTV DPad FT-TS600.ced
 ObjVer=1
 PrH=336
 n1I=5
@@ -17803,14 +17803,14 @@ mI=5
 mO=5
 tO=5
 mP=1
-P1=43d
+P1=51d
 CedH=8
 ]
 [
 ObjTp=Sm
 H=340
 SmC=2942
-Nm=TEC Lite TSW-750__Device_Control_IPTV_IPTV Keypad.ced
+Nm=TEC Lite FT-TS600__Device_Control_IPTV_IPTV Keypad FT-TS600.ced
 ObjVer=1
 PrH=336
 n1I=12
@@ -17822,7 +17822,7 @@ mI=12
 mO=12
 tO=12
 mP=1
-P1=42d
+P1=52d
 CedH=9
 ]
 [
@@ -21562,10 +21562,10 @@ H=7
 SmH=338
 CedVer=1
 CedMod=
-GUID=8E8D6952-F4E3-4778-B262-B5598985FA2E
-Hint=Blu-ray DPad (Smart Object ID=41)
+GUID=12D92D58-732B-4547-BFC8-DDD5645B2692
+Hint=Blu-ray DPad FT-TS600 (Smart Object ID=53)
 SGControlType=DPad
-SGControlName=Blu-ray DPad
+SGControlName=Blu-ray DPad FT-TS600
 ]
 [
 ObjTp=CED
@@ -21573,10 +21573,10 @@ H=8
 SmH=339
 CedVer=1
 CedMod=
-GUID=06471F70-4E91-49C9-95AB-04E8DE50F8A5
-Hint=IPTV DPad (Smart Object ID=43)
+GUID=DA21027A-7ED4-4CC6-9126-19F462C39069
+Hint=IPTV DPad FT-TS600 (Smart Object ID=51)
 SGControlType=DPad
-SGControlName=IPTV DPad
+SGControlName=IPTV DPad FT-TS600
 ]
 [
 ObjTp=CED
@@ -21584,10 +21584,10 @@ H=9
 SmH=340
 CedVer=1
 CedMod=
-GUID=456390D6-BFE5-4B0A-8561-FA1B6AC57839
-Hint=IPTV Keypad (Smart Object ID=42)
+GUID=7E50C919-5FF6-49B0-B2C7-2AB5DFA2BC66
+Hint=IPTV Keypad FT-TS600 (Smart Object ID=52)
 SGControlType=Simple Keypad
-SGControlName=IPTV Keypad
+SGControlName=IPTV Keypad FT-TS600
 ]
 [
 ObjTp=Sg
