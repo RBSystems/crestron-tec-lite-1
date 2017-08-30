@@ -170,7 +170,7 @@ FUNCTION getMuteValue(){
 
 FUNCTION getVolumeValues(){
 	string status[16],speaker[4],headphone[4],speakerMute[5],headphoneMute[5],mute[16];
-	SIGNED_INTEGER muteOn;
+//	SIGNED_INTEGER muteOn;
 	
 	Log("Get Volume Values Function Called");
 
