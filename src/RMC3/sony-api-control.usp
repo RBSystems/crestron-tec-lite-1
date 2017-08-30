@@ -5,11 +5,11 @@
 /*
 Dealer Name: Brigham Young University
 System Name: Sony Display IP Controller
-System Number: 1.3.4
+System Number: 1.3.5
 Programmer: Dan Clegg
 Comments: Communicate with Sony Flat-panel (FWD or XBR) displays
 
-Version Update: Added Mute and Unmute
+Version Update: 
 */
 
 /*******************************************************************************************
@@ -404,7 +404,7 @@ FUNCTION getStatus(){
 FUNCTION mute()
 {
 	Log("Mute Function Called");
-	body = "{ \"method \": \"setAudioMute \", \"id \": 601, \"params \": [{ \"status \": true}],  \"version \":  \"1.0 \" }";
+	body = "{ \"id\": 601, \"method\": \"setAudioMute\", \"params\": [{ \"status\": true}], \"version\": \"1.0\" }";
 	sendMessage("audio", body);
 
 	wait(10)
@@ -413,7 +413,7 @@ FUNCTION mute()
 
 FUNCTION unmute(){
 	Log("Unmute Function Called");
-	body = "{ \"method \": \"setAudioMute \", \"id \": 601, \"params \": [{ \"status \": false}],  \"version \":  \"1.0 \" }";
+	body = "{ \"id\": 601, \"method\": \"setAudioMute\", \"params\": [{ \"status\": false}], \"version\": \"1.0\" }";
 	sendMessage("audio", body);
 
 	wait(10)
