@@ -1,0 +1,642 @@
+/*******************************************************************************************
+  SIMPL+ Module Information
+  (Fill in comments below)
+*******************************************************************************************/
+/*
+Dealer Name: Brigham Young University
+System Name: Touchpanel Mode Selector
+System Number: 2.0.0
+Programmer: Dan Clegg
+Comments: Do what the Truth Table does, but out to 6 bits/inputs. Totally handle Mode logic,
+avoiding one-shots, interlocks, etc.
+*/
+
+
+/*******************************************************************************************
+  Compiler Directives
+  (Uncomment and declare compiler directives as needed)
+*******************************************************************************************/
+#SYMBOL_NAME "Touchpanel Mode Selector"
+#CATEGORY "46" "Custom Logic Symbols"
+#DEFINE_CONSTANT BIGGESTSIZE 65534
+#DEFINE_CONSTANT NEWLINE "\n"
+#DEFAULT_VOLATILE
+#ENABLE_STACK_CHECKING
+#PRINT_TO_Trace
+#ENABLE_Trace
+
+#HELP_BEGIN
+See TPModeSelectorPermutations.pdf for detail on the permutations of all 6 bits
+#HELP_END
+
+
+/*******************************************************************************************
+  DIGITAL, ANALOG and SERIAL INPUTS and OUTPUTS
+*******************************************************************************************/
+DIGITAL_INPUT di_1, di_2, di_3, di_4, di_5, di_6;
+
+//DIGITAL_OUTPUT do_1, do_2, do_3, do_4, do_5, do_6, do_7, do_8, do_9, do_10, do_11, do_12, do_13, do_14, do_15, do_16, do_17, do_18, do_19, do_20, do_21, do_22, do_23, do_24, do_25, do_26, do_27, do_28, do_29, do_30, do_31, do_32, do_33, do_34, do_35, do_36, do_37, do_38, do_39, do_40, do_41, do_42, do_43, do_44, do_45, do_46, do_47, do_48, do_49, do_50, do_51, do_52, do_53, do_54, do_55, do_56, do_57, do_58, do_59, do_60, do_61, do_62, do_63, do_64;
+DIGITAL_OUTPUT _skip_, _skip_, _skip_, mode1, mode2, mode3, mode4, mode5, mode6, mode7, mode8, mode9, mode10, mode11, mode12, mode13, mode14, mode15, modeInvalid;
+
+/*******************************************************************************************
+ Global Variables
+*******************************************************************************************/
+INTEGER val;
+
+/*******************************************************************************************
+  Functions -- No Editing
+*******************************************************************************************/
+
+Function Log(string msg) {
+    Print("\n");
+    Trace("Trace: %s", msg);
+
+}
+
+Function Error(string msg) {
+    Log(msg);
+}
+
+Function CLEAR() {
+    mode1 = 0;
+    mode2 = 0;
+    mode3 = 0;
+    mode4 = 0;
+    mode5 = 0;
+    mode6 = 0;
+    mode7 = 0;
+    mode8 = 0;
+    mode9 = 0;
+    mode10 = 0;
+    mode11 = 0;
+    mode12 = 0;
+    mode13 = 0;
+    mode14 = 0;
+    mode15 = 0;
+    modeInvalid = 0;
+}
+
+Function Reset() {
+    CLEAR();
+    /*do_1 = 0;
+    do_2 = 0;
+    do_3 = 0;
+    do_4 = 0;
+    do_5 = 0;
+    do_6 = 0;
+    do_7 = 0;
+    do_8 = 0;
+    do_9 = 0;
+    do_10 = 0;
+    do_11 = 0;
+    do_12 = 0;
+    do_13 = 0;
+    do_14 = 0;
+    do_15 = 0;
+    do_16 = 0;
+    do_17 = 0;
+    do_18 = 0;
+    do_19 = 0;
+    do_20 = 0;
+    do_21 = 0;
+    do_22 = 0;
+    do_23 = 0;
+    do_24 = 0;
+    do_25 = 0;
+    do_26 = 0;
+    do_27 = 0;
+    do_28 = 0;
+    do_29 = 0;
+    do_30 = 0;
+    do_31 = 0;
+    do_32 = 0;
+    do_33 = 0;
+    do_34 = 0;
+    do_35 = 0;
+    do_36 = 0;
+    do_37 = 0;
+    do_38 = 0;
+    do_39 = 0;
+    do_40 = 0;
+    do_41 = 0;
+    do_42 = 0;
+    do_43 = 0;
+    do_44 = 0;
+    do_45 = 0;
+    do_46 = 0;
+    do_47 = 0;
+    do_48 = 0;
+    do_49 = 0;
+    do_50 = 0;
+    do_51 = 0;
+    do_52 = 0;
+    do_53 = 0;
+    do_54 = 0;
+    do_55 = 0;
+    do_56 = 0;
+    do_57 = 0;
+    do_58 = 0;
+    do_59 = 0;
+    do_60 = 0;
+    do_61 = 0;
+    do_62 = 0;
+    do_63 = 0;
+    do_64 = 0;*/
+}
+
+/******
+ This function reevaluates the var "val"=0;\n treating the digital inputs as binary bits.
+di_1 = 32
+di_2 = 16
+di_3 = 8
+di_4 = 4
+di_5 = 2
+di_6 = 1
+********/
+Function reeval(SIGNED_INTEGER addRemoveValue) {
+    INTEGER newVal;
+    reset();
+
+//    Trace("val: %d", val);
+    newVal = val + addRemoveValue;
+//    Trace("newVal: %d", newVal);
+
+    val = newVal;
+
+    switch (val) {
+        case (1):
+            {
+                reset();
+                //do_1 = 1;
+                mode15 = 1;
+            }
+        case (2):
+            {
+                reset();
+                //do_2 = 1;
+                mode9 = 1;
+            }
+        case (3):
+            {
+                reset();
+                //do_3 = 1;
+                mode13 = 1;
+            }
+        case (4):
+            {
+                reset();
+                //do_4 = 1;
+                mode9 = 1;
+            }
+        case (5):
+            {
+                reset();
+                //do_5 = 1;
+                mode13 = 1;
+            }
+        case (6):
+            {
+                reset();
+                //do_6 = 1;
+                mode10 = 1;
+            }
+        case (7):
+            {
+                reset();
+                //do_7 = 1;
+                mode14 = 1;
+            }
+        case (8):
+            {
+                reset();
+                //do_8 = 1;
+                mode9 = 1;
+            }
+        case (9):
+            {
+                reset();
+                //do_9 = 1;
+                mode13 = 1;
+            }
+        case (10):
+            {
+                reset();
+                //do_10 = 1;
+                mode10 = 1;
+            }
+        case (11):
+            {
+                reset();
+                //do_11 = 1;
+                mode14 = 1;
+            }
+        case (12):
+            {
+                reset();
+                //do_12 = 1;
+                mode10 = 1;
+            }
+        case (13):
+            {
+                reset();
+                //do_13 = 1;
+                mode14 = 1;
+            }
+        case (14):
+            {
+                reset();
+                //do_14 = 1;
+                mode11 = 1;
+            }
+        case (15):
+            {
+                reset();
+                //do_15 = 1;
+                modeInvalid = 1;
+            }
+        case (16):
+            {
+                reset();
+                //do_16 = 1;
+                mode9 = 1;
+            }
+        case (17):
+            {
+                reset();
+                //do_17 = 1;
+                mode13 = 1;
+            }
+        case (18):
+            {
+                reset();
+                //do_18 = 1;
+                mode10 = 1;
+            }
+        case (19):
+            {
+                reset();
+                //do_19 = 1;
+                mode14 = 1;
+            }
+        case (20):
+            {
+                reset();
+                //do_20 = 1;
+                mode10 = 1;
+            }
+        case (21):
+            {
+                reset();
+                //do_21 = 1;
+                mode14 = 1;
+            }
+        case (22):
+            {
+                reset();
+                //do_22 = 1;
+                mode11 = 1;
+            }
+        case (23):
+            {
+                reset();
+                //do_23 = 1;
+                modeInvalid = 1;
+            }
+        case (24):
+            {
+                reset();
+                //do_24 = 1;
+                mode10 = 1;
+            }
+        case (25):
+            {
+                reset();
+                //do_25 = 1;
+                mode14 = 1;
+            }
+        case (26):
+            {
+                reset();
+                //do_26 = 1;
+                mode11 = 1;
+            }
+        case (27):
+            {
+                reset();
+                //do_27 = 1;
+                modeInvalid = 1;
+            }
+        case (28):
+            {
+                reset();
+                //do_28 = 1;
+                mode11 = 1;
+            }
+        case (29):
+            {
+                reset();
+                //do_29 = 1;
+                modeInvalid = 1;
+            }
+        case (30):
+            {
+                reset();
+                //do_30 = 1;
+                mode12 = 1;
+            }
+        case (31):
+            {
+                reset();
+                //do_31 = 1;
+                modeInvalid = 1;
+            }
+        case (32):
+            {
+                reset();
+                //do_32 = 1;
+                mode1 = 1;
+            }
+        case (33):
+            {
+                reset();
+                //do_33 = 1;
+                mode6 = 1;
+            }
+        case (34):
+            {
+                reset();
+                //do_34 = 1;
+                mode2 = 1;
+            }
+        case (35):
+            {
+                reset();
+                //do_35 = 1;
+                mode7 = 1;
+            }
+        case (36):
+            {
+                reset();
+                //do_36 = 1;
+                mode2 = 1;
+            }
+        case (37):
+            {
+                reset();
+                //do_37 = 1;
+                mode7 = 1;
+            }
+        case (38):
+            {
+                reset();
+                //do_38 = 1;
+                mode3 = 1;
+            }
+        case (39):
+            {
+                reset();
+                //do_39 = 1;
+                mode8 = 1;
+            }
+        case (40):
+            {
+                reset();
+                //do_40 = 1;
+                mode2 = 1;
+            }
+        case (41):
+            {
+                reset();
+                //do_41 = 1;
+                mode7 = 1;
+            }
+        case (42):
+            {
+                reset();
+                //do_42 = 1;
+                mode3 = 1;
+            }
+        case (43):
+            {
+                reset();
+                //do_43 = 1;
+                mode8 = 1;
+            }
+        case (44):
+            {
+                reset();
+                //do_44 = 1;
+                mode3 = 1;
+            }
+        case (45):
+            {
+                reset();
+                //do_45 = 1;
+                mode8 = 1;
+            }
+        case (46):
+            {
+                reset();
+                //do_46 = 1;
+                mode4 = 1;
+            }
+        case (47):
+            {
+                reset();
+                //do_47 = 1;
+                modeInvalid = 1;
+            }
+        case (48):
+            {
+                reset();
+                //do_48 = 1;
+                mode2 = 1;
+            }
+        case (49):
+            {
+                reset();
+                //do_49 = 1;
+                mode7 = 1;
+            }
+        case (50):
+            {
+                reset();
+                //do_50 = 1;
+                mode3 = 1;
+            }
+        case (51):
+            {
+                reset();
+                //do_51 = 1;
+                mode8 = 1;
+            }
+        case (52):
+            {
+                reset();
+                //do_52 = 1;
+                mode3 = 1;
+            }
+        case (53):
+            {
+                reset();
+                //do_53 = 1;
+                mode8 = 1;
+            }
+        case (54):
+            {
+                reset();
+                //do_54 = 1;
+                mode4 = 1;
+            }
+        case (55):
+            {
+                reset();
+                //do_55 = 1;
+                modeInvalid = 1;
+            }
+        case (56):
+            {
+                reset();
+                //do_56 = 1;
+                mode3 = 1;
+            }
+        case (57):
+            {
+                reset();
+                //do_57 = 1;
+                mode8 = 1;
+            }
+        case (58):
+            {
+                reset();
+                //do_58 = 1;
+                mode4 = 1;
+            }
+        case (59):
+            {
+                reset();
+                //do_59 = 1;
+                modeInvalid = 1;
+            }
+        case (60):
+            {
+                reset();
+                //do_60 = 1;
+                mode4 = 1;
+            }
+        case (61):
+            {
+                reset();
+                //do_61 = 1;
+                modeInvalid = 1;
+            }
+        case (62):
+            {
+                reset();
+                //do_62 = 1;
+                mode5 = 1;
+            }
+        case (63):
+            {
+                reset();
+                //do_63 = 1;
+                modeInvalid = 1;
+            }
+        default:
+            {
+                reset();
+                modeInvalid = 1;
+            }
+
+    }
+}
+
+/*******************************************************************************************
+  Event Handlers
+*******************************************************************************************/
+
+PUSH di_1 {
+    SIGNED_INTEGER i;
+    i = 32;
+    reeval(i);
+}
+PUSH di_2 {
+    SIGNED_INTEGER i;
+    i = 16;
+    reeval(i);
+}
+PUSH di_3 {
+    SIGNED_INTEGER i;
+    i = 8;
+    reeval(i);
+}
+PUSH di_4 {
+    SIGNED_INTEGER i;
+    i = 4;
+    reeval(i);
+}
+PUSH di_5 {
+    SIGNED_INTEGER i;
+    i = 2;
+    reeval(i);
+}
+PUSH di_6 {
+    SIGNED_INTEGER i;
+    i = 1;
+    reeval(i);
+}
+
+
+RELEASE di_1 {
+    SIGNED_INTEGER i;
+    i = -32;
+    reeval(i);
+}
+RELEASE di_2 {
+    SIGNED_INTEGER i;
+    i = -16;
+    reeval(i);
+}
+RELEASE di_3 {
+    SIGNED_INTEGER i;
+    i = -8;
+    reeval(i);
+}
+RELEASE di_4 {
+    SIGNED_INTEGER i;
+    i = -4;
+    reeval(i);
+}
+RELEASE di_5 {
+    SIGNED_INTEGER i;
+    i = -2;
+    reeval(i);
+}
+RELEASE di_6 {
+    SIGNED_INTEGER i;
+    i = -1;
+    reeval(i);
+}
+
+
+
+/********
+	Init
+*********/
+
+Function Init() {
+    val = 0;
+	modeInvalid = 1;
+}
+
+/*******************************************************************************************
+  Main()
+  Uncomment and place one-time startup code here
+  (This code will get called when the system starts up)
+*******************************************************************************************/
+
+Function Main() {
+    WaitForInitializationComplete();
+
+    Init();
+}
