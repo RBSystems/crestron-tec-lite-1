@@ -5,7 +5,7 @@
 /*
 Dealer Name: Brigham Young University
 System Name: Touchpanel Mode Selector
-System Number: 0.0.1
+System Number: 1.0.0
 Programmer: Dan Clegg
 Comments: Do what the Truth Table does, but out to 6 bits/inputs
 */
@@ -57,72 +57,71 @@ Function Error(string msg)
 	Log(msg);
 }
 
-Function Reset()
-{
-do_1=0;
-do_2=0;
-do_3=0;
-do_4=0;
-do_5=0;
-do_6=0;
-do_7=0;
-do_8=0;
-do_9=0;
-do_10=0;
-do_11=0;
-do_12=0;
-do_13=0;
-do_14=0;
-do_15=0;
-do_16=0;
-do_17=0;
-do_18=0;
-do_19=0;
-do_20=0;
-do_21=0;
-do_22=0;
-do_23=0;
-do_24=0;
-do_25=0;
-do_26=0;
-do_27=0;
-do_28=0;
-do_29=0;
-do_30=0;
-do_31=0;
-do_32=0;
-do_33=0;
-do_34=0;
-do_35=0;
-do_36=0;
-do_37=0;
-do_38=0;
-do_39=0;
-do_40=0;
-do_41=0;
-do_42=0;
-do_43=0;
-do_44=0;
-do_45=0;
-do_46=0;
-do_47=0;
-do_48=0;
-do_49=0;
-do_50=0;
-do_51=0;
-do_52=0;
-do_53=0;
-do_54=0;
-do_55=0;
-do_56=0;
-do_57=0;
-do_58=0;
-do_59=0;
-do_60=0;
-do_61=0;
-do_62=0;
-do_63=0;
-do_64=0;
+Function Reset() {
+    do_1 = 0;
+    do_2 = 0;
+    do_3 = 0;
+    do_4 = 0;
+    do_5 = 0;
+    do_6 = 0;
+    do_7 = 0;
+    do_8 = 0;
+    do_9 = 0;
+    do_10 = 0;
+    do_11 = 0;
+    do_12 = 0;
+    do_13 = 0;
+    do_14 = 0;
+    do_15 = 0;
+    do_16 = 0;
+    do_17 = 0;
+    do_18 = 0;
+    do_19 = 0;
+    do_20 = 0;
+    do_21 = 0;
+    do_22 = 0;
+    do_23 = 0;
+    do_24 = 0;
+    do_25 = 0;
+    do_26 = 0;
+    do_27 = 0;
+    do_28 = 0;
+    do_29 = 0;
+    do_30 = 0;
+    do_31 = 0;
+    do_32 = 0;
+    do_33 = 0;
+    do_34 = 0;
+    do_35 = 0;
+    do_36 = 0;
+    do_37 = 0;
+    do_38 = 0;
+    do_39 = 0;
+    do_40 = 0;
+    do_41 = 0;
+    do_42 = 0;
+    do_43 = 0;
+    do_44 = 0;
+    do_45 = 0;
+    do_46 = 0;
+    do_47 = 0;
+    do_48 = 0;
+    do_49 = 0;
+    do_50 = 0;
+    do_51 = 0;
+    do_52 = 0;
+    do_53 = 0;
+    do_54 = 0;
+    do_55 = 0;
+    do_56 = 0;
+    do_57 = 0;
+    do_58 = 0;
+    do_59 = 0;
+    do_60 = 0;
+    do_61 = 0;
+    do_62 = 0;
+    do_63 = 0;
+    do_64 = 0;
 }
 
 /******
