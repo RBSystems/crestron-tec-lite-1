@@ -640,8 +640,8 @@ RELEASE setAudioVolumeToValue // Set the volume to an explicit value
 	val = setVolumeValue S/ BIGGESTSIZE * 100;
 	vStr = ITOA(val);
 
-	Trace("volume : %d",setVolumeValue);
-	Trace("val : %d",val);
+//	Trace("volume : %d",setVolumeValue);
+//	Trace("val : %d",val);
 //
 //		if ( headphoneAudio = 1)
 //		{
