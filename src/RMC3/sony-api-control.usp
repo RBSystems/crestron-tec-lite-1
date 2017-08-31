@@ -5,11 +5,11 @@
 /*
 Dealer Name: Brigham Young University
 System Name: Sony Display IP Controller
-System Number: 1.3.6
+System Number: 1.3.7
 Programmer: Dan Clegg
 Comments: Communicate with Sony Flat-panel (FWD or XBR) displays
 
-Version Update: Fixed mute feedback
+Version Update: Changing slider release audio logic
 */
 
 /*******************************************************************************************
@@ -635,20 +635,14 @@ RELEASE setAudioVolumeToValue // Set the volume to an explicit value
 {
 	INTEGER val;
 	STRING vStr[8];
-	vStr = "";
-//	if (setAudioVolumeToValue > 0){
+	vStr = "";	
 	val = setVolumeValue S/ BIGGESTSIZE * 100;
 	vStr = ITOA(val);
 
-//	Trace("volume : %d",setVolumeValue);
-//	Trace("val : %d",val);
-//
-//		if ( headphoneAudio = 1)
-//		{
 	body = "{ \"id\": 601, \"method\": \"setAudioVolume\", \"params\": [{ \"volume\": \"" + vStr + "\", \"target\": \"headphone\" }], \"version\": \"1.0\"}";
 	sendMessage("audio",body);
 		
-	wait(10)
+	wait(100)
 	{
 		INTEGER val2;
 		STRING v2Str[8];
@@ -656,15 +650,16 @@ RELEASE setAudioVolumeToValue // Set the volume to an explicit value
 
 		val2 = setVolumeValue S/ BIGGESTSIZE * 100;
 		v2Str = ITOA(val2);
-//		}
-//		else {
+
 		body = "{ \"id\": 601, \"method\": \"setAudioVolume\", \"params\": [{ \"volume\": \"" + v2Str + "\", \"target\": \"speaker\" }], \"version\": \"1.0\"}";
-//		}
+
 		sendMessage("audio", body);
 		
 		wait(10)
+		{
 			getVolumeValues();
-	}
+		}
+	}	
 	
 }
 
@@ -738,21 +733,27 @@ CHANGE setVolumeValue
 {
 	if(setVolumeValue <= minVolume)
 	{
-		if (minVolume > 0){
+	/*	if (minVolume > 0){
 			volume = minVolume * volumeStepValue;
 		}
 		else
 		{
 			volume = 0;
-		}
+		}*/
+		volume = 0;
 	}
 	else if (setVolumeValue >= maxVolume)
 	{
-		volume = maxVolume * volumeStepValue;
+	//	volume = maxVolume * volumeStepValue;
+		volume = maxVolume;
 	}
 	else {
-		volume = setVolumeValue * volumeStepValue;
+	//	volume = setVolumeValue * volumeStepValue;
+		volume = setVolumeValue;
 	}
+	/*speakerVolumeValue = volume;
+	headphoneVolumeValue = volume; 
+	volumeToPanel = volume;*/
 }
 
 CHANGE contentToPlay
@@ -782,7 +783,7 @@ CHANGE parseRx
 
 CHANGE systemMaxVolume{
 
-	maxVolume = systemMaxVolume;
+	maxVolume = systemMaxVolume * volumeStepValue;
 
 }
 
