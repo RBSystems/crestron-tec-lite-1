@@ -9,11 +9,11 @@ VTProeVer=6.1.05
 [
 ObjTp=Symbol
 Name=TEC Lite TSW-760__Device_Control_IPTV_IPTV Keypad.ced
-Hint=IPTV Keypad (Smart Object ID=62)
+Hint=IPTV Keypad (Smart Object ID=42)
 Code=3
 SGControlType=Simple Keypad
 SGControlName=IPTV Keypad
-GUID=9FD2A55B-AFA4-4694-9E18-E95DD4437989
+GUID=620E21FD-68EC-4FCA-B6F7-C1E045E3EB32
 SmplCName=TEC Lite TSW-760__Device_Control_IPTV_IPTV Keypad.ced
 SMWRev=4.02.19
 Expand=expand_random
@@ -86,7 +86,7 @@ ParamSigType1=Constant
 MPp=1
 Pp1=3
 CedH=3
-SmartObjId=62d
+SmartObjId=42d
 ]
 ; Parameter Properties for Smart Object ID
 [
@@ -94,7 +94,7 @@ ObjTp=Dp
 H=3
 Tp=1
 HD=TRUE
-DV=62d
+DV=42d
 NF=1
 DNF=1
 EncFmt=0

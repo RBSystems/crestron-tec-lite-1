@@ -9,11 +9,11 @@ VTProeVer=6.1.05
 [
 ObjTp=Symbol
 Name=TEC Lite TSW-760__Device_Control_Blu-ray_Blu-ray DPad.ced
-Hint=Blu-ray DPad (Smart Object ID=61)
+Hint=Blu-ray DPad (Smart Object ID=41)
 Code=1
 SGControlType=DPad
 SGControlName=Blu-ray DPad
-GUID=F7949CC3-4F92-4DD3-B1E7-693D66065A37
+GUID=A25FB43F-6C6B-4F12-93F3-1FFF943E1D30
 SmplCName=TEC Lite TSW-760__Device_Control_Blu-ray_Blu-ray DPad.ced
 SMWRev=4.02.19
 Expand=expand_random
@@ -58,7 +58,7 @@ ParamSigType1=Constant
 MPp=1
 Pp1=1
 CedH=1
-SmartObjId=61d
+SmartObjId=41d
 ]
 ; Parameter Properties for Smart Object ID
 [
@@ -66,7 +66,7 @@ ObjTp=Dp
 H=1
 Tp=1
 HD=TRUE
-DV=61d
+DV=41d
 NF=1
 DNF=1
 EncFmt=0
