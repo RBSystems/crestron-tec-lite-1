@@ -18,8 +18,9 @@ Version Update: Changing slider release audio logic
 *******************************************************************************************/
 #SYMBOL_NAME "Sony Display IP Controller"
 #CATEGORY "46" "Sony Displays"
-#DEFINE_CONSTANT	BIGGESTSIZE	65534
+#DEFINE_CONSTANT	BIGGESTSIZE 65534
 #DEFINE_CONSTANT	NEWLINE	"\n"
+#DEFINE_CONSTANT	WAITTIME	300
 #DEFAULT_VOLATILE
 #ENABLE_STACK_CHECKING
 #PRINT_TO_Trace
@@ -35,13 +36,13 @@ DIGITAL_INPUT blankDisplay,switchToHDMI1, switchToHDMI2, switchToHDMI3, switchTo
 
 STRING_INPUT	PSK$[32],IPAddress[32],parseRx[BIGGESTSIZE],contentToPlay[256],TVChannel[32],changeActiveInput[32];
 
-ANALOG_INPUT	_skip_,_skip_,setVolumeValue,systemMaxVolume;
+ANALOG_INPUT	_skip_,_skip_,setVolumeValue,systemMaxVolume,scaledSetVolumeValue;
 
 ANALOG_OUTPUT	speakerVolumeValue,headphoneVolumeValue,volumeToPanel,sourceSelect_ai;
 
 STRING_OUTPUT	SelectedSrcCh$,_skip_,ERR_MSG$,RX$,parsedResponse,activeSource;
 
-DIGITAL_OUTPUT	activeSource_HDMI1,activeSource_HDMI2,activeSource_HDMI3,activeSource_HDMI4,displayBlanked,powerIsOn,volumeIsMuted;
+DIGITAL_OUTPUT	activeSource_HDMI1,activeSource_HDMI2,activeSource_HDMI3,activeSource_HDMI4,displayBlanked,powerIsOn,volumeIsMuted,sendSliderVolume;
 
 DIGITAL_OUTPUT _SKIP_,ERR, CommErr, BusySignal;
 
@@ -51,14 +52,11 @@ DIGITAL_OUTPUT _SKIP_,ERR, CommErr, BusySignal;
 
 /*******************************************************************************************
   Global Variables
-  (Uncomment and declare global variables as needed)
-  Note:  Be sure to initialize all declared STRING variables as needed
-         For example, in Function Main: myString = "";
 *******************************************************************************************/
 
 STRING PSK[32],IP[32],body[1024],TVCH[32],rx[BIGGESTSIZE],rxStr[BIGGESTSIZE],URL[1024],playContentString[256],tvTunerChannel[32],newInput[32];
 STRING parsedMessage[1000];
-INTEGER isEnabled,volume,volumeStepValue,incrementDecrementStepValue,minVolume,maxVolume,headphoneAudio,speakerAudio,displayIsPoweredOn;
+INTEGER isEnabled,volume,volumeStepValue,incrementDecrementStepValue,minVolume,maxVolume,headphoneAudio,speakerAudio,displayIsPoweredOn,sliderPressed,sliderVolumeValue;
 
 HTTPRequest client;
 StringUtils stringUtility;
@@ -89,7 +87,6 @@ Function NotBusy(){
 
 /*******************************************************************************************
   Event Handlers
-  (Uncomment and declare additional event handlers as needed)
 *******************************************************************************************/
 
 /////////////////////////////////////////////////
@@ -109,10 +106,10 @@ FUNCTION sendMessage(string resource, string body) {
 	if (isEnabled = 1)
 	{
 		revisedString = "sony/" + resource;
-		Trace("resource %s", revisedString);
-		Trace("URL %s", URL);
-		Trace("PSK %s", PSK);
-		Trace("body %s", body);
+//		Trace("resource %s", revisedString);
+//		Trace("URL %s", URL);
+//		Trace("PSK %s", PSK);
+//		Trace("body %s", body);
 		
 		result = client.SendCommand(URL, revisedString, body, PSK);
 		Trace("result %ld",result);
@@ -464,6 +461,44 @@ FUNCTION powerOff()
 
 }
 
+FUNCTION sliderVolume()
+{
+	//INTEGER scaled,scaledDecimal;
+	STRING vStr[8];
+	//TRACE("volume in sliderVolume function: %d",volume);
+	vStr = "";
+	headphoneVolumeValue = setVolumeValue;
+	speakerVolumeValue = setVolumeValue;
+	volumeToPanel = setVolumeValue;
+	//scaledDecimal = setVolumeValue S/ BIGGESTSIZE;
+	TRACE("scaledDecimal: %d",scaledSetVolumeValue);
+	//scaled = scaledDecimal * 100;
+	
+//	TRACE("scaled: %d",scaled);
+
+	// Consider using this if you need to use a buffer to send the volume on
+	//	sendSliderVolume = 1;
+	//wait(200){ 
+	//	sendSliderVolume = 0;
+	//}
+	
+	vStr = ITOA(scaledSetVolumeValue);
+	if (headphoneAudio = 1)
+	{
+		body = "{ \"id\": 601, \"method\": \"setAudioVolume\", \"params\": [{ \"volume\": \"" + vStr + "\", \"target\": \"headphone\" }], \"version\": \"1.0\"}";
+		sendMessage("audio",body);
+	}
+	else {
+		body = "{ \"id\": 601, \"method\": \"setAudioVolume\", \"params\": [{ \"volume\": \"" + vStr + "\", \"target\": \"speaker\" }], \"version\": \"1.0\"}";
+		sendMessage("audio", body);
+	}
+	wait(10)
+	{
+		getVolumeValues();
+	}
+
+}
+
 ///////////////
 // API Method Events
 ///////////////
@@ -631,36 +666,21 @@ RELEASE unmuteAudio
 {
 	unmute();
 }
+
+PUSH setAudioVolumeToValue
+{
+	Wait(300,SliderVolumeWaitTimer)
+	{
+		sliderVolume();
+	}
+
+}
+    
 RELEASE setAudioVolumeToValue // Set the volume to an explicit value
 {
-	INTEGER val;
-	STRING vStr[8];
-	vStr = "";	
-	val = setVolumeValue S/ BIGGESTSIZE * 100;
-	vStr = ITOA(val);
-
-	body = "{ \"id\": 601, \"method\": \"setAudioVolume\", \"params\": [{ \"volume\": \"" + vStr + "\", \"target\": \"headphone\" }], \"version\": \"1.0\"}";
-	sendMessage("audio",body);
-		
-	wait(100)
-	{
-		INTEGER val2;
-		STRING v2Str[8];
-		v2Str = "";
-
-		val2 = setVolumeValue S/ BIGGESTSIZE * 100;
-		v2Str = ITOA(val2);
-
-		body = "{ \"id\": 601, \"method\": \"setAudioVolume\", \"params\": [{ \"volume\": \"" + v2Str + "\", \"target\": \"speaker\" }], \"version\": \"1.0\"}";
-
-		sendMessage("audio", body);
-		
-		wait(10)
-		{
-			getVolumeValues();
-		}
-	}	
+	CANCELWAIT(SliderVolumeWaitTimer);
 	
+	sliderVolume();
 }
 
 RELEASE incrementVolume // Increase the volume by a set amount
@@ -729,31 +749,37 @@ CHANGE IPAddress
 	IP = IPAddress;
 	URL = "http://" + IP;
 }
-CHANGE setVolumeValue
+CHANGE setVolumeValue {
+	TRACE("volume in setVolumeValue: %d",volume);
+	RetimeWait(WAITTIME, SliderVolumeWaitTimer);
+	sliderVolumeValue = setVolumeValue;
+	
+}
+CHANGE scaledSetVolumeValue
 {
-	if(setVolumeValue <= minVolume)
-	{
-	/*	if (minVolume > 0){
-			volume = minVolume * volumeStepValue;
-		}
-		else
+	wait(10){
+		STRING vStr[32];
+		vStr = "";
+		headphoneVolumeValue = setVolumeValue;
+		speakerVolumeValue = setVolumeValue;
+		volumeToPanel = setVolumeValue;
+	
+		vStr = ITOA(scaledSetVolumeValue);
+		if (headphoneAudio = 1)
 		{
-			volume = 0;
-		}*/
-		volume = 0;
+			body = "{ \"id\": 601, \"method\": \"setAudioVolume\", \"params\": [{ \"volume\": \"" + vStr + "\", \"target\": \"headphone\" }], \"version\": \"1.0\"}";
+			sendMessage("audio",body);
+		}
+		else {
+			body = "{ \"id\": 601, \"method\": \"setAudioVolume\", \"params\": [{ \"volume\": \"" + vStr + "\", \"target\": \"speaker\" }], \"version\": \"1.0\"}";
+			sendMessage("audio", body);
+		}
+		wait(10)
+		{
+			getVolumeValues();
+		}
+	
 	}
-	else if (setVolumeValue >= maxVolume)
-	{
-	//	volume = maxVolume * volumeStepValue;
-		volume = maxVolume;
-	}
-	else {
-	//	volume = setVolumeValue * volumeStepValue;
-		volume = setVolumeValue;
-	}
-	/*speakerVolumeValue = volume;
-	headphoneVolumeValue = volume; 
-	volumeToPanel = volume;*/
 }
 
 CHANGE contentToPlay
@@ -831,6 +857,8 @@ Function Init()
 	speakerAudio = 0;
 	displayIsPoweredOn = 0;
 	incrementDecrementStepValue = 1;
+	sliderPressed = 0;
+	sliderVolumeValue = 0;
 }
 
 /*******************************************************************************************
