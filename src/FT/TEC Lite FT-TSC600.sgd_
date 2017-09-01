@@ -4,24 +4,24 @@ Sgntr=SGD
 RelVrs=3
 VTProeVer=6.1.05
 Schema=1
-CRCGUID=DF958EDB-C1F6-4ADF-8206-D88926B498C5
+CRCGUID=DF097191-A73B-41A7-8566-5708EDD94EF0
 ]
 ;================================================================================
 [
 ObjTp=Hd
 ProjectFile=TEC Lite FT-TSC600.vtp
-VtpGuid=460A896A-B934-4EF5-9EB9-B85380371F19
+VtpGuid=A130988D-7A65-4B0B-9F55-686D74236153
 ]
 ;================================================================================
 [
 ObjTp=Symbol
-Name=TEC Lite FT-TSC600__Device_Control_Blu-ray_Blu-ray DPad FT-TS600.ced
-Hint=Blu-ray DPad FT-TS600 (Smart Object ID=53)
+Name=TEC Lite FT-TSC600__Device_Control_Blu-ray_Blu-ray DPad.ced
+Hint=Blu-ray DPad (Smart Object ID=41)
 Code=1
 SGControlType=DPad
-SGControlName=Blu-ray DPad FT-TS600
-GUID=AA29D145-3E99-41F9-8E5A-68B981CB7A4A
-SmplCName=TEC Lite FT-TSC600__Device_Control_Blu-ray_Blu-ray DPad FT-TS600.ced
+SGControlName=Blu-ray DPad
+GUID=69FDD5F6-E44C-405A-BA03-EE37D7BFD009
+SmplCName=TEC Lite FT-TSC600__Device_Control_Blu-ray_Blu-ray DPad.ced
 SMWRev=4.02.19
 Expand=expand_random
 HelpID=10015
@@ -65,7 +65,7 @@ ParamSigType1=Constant
 MPp=1
 Pp1=1
 CedH=1
-SmartObjId=53d
+SmartObjId=41d
 ]
 ; Parameter Properties for Smart Object ID
 [
@@ -73,7 +73,7 @@ ObjTp=Dp
 H=1
 Tp=1
 HD=TRUE
-DV=53d
+DV=41d
 NF=1
 DNF=1
 EncFmt=0
@@ -84,7 +84,7 @@ Sgn=0
 [
 ObjTp=CED
 H=1
-Name=TEC Lite FT-TSC600__Device_Control_Blu-ray_Blu-ray DPad FT-TS600.ced
+Name=TEC Lite FT-TSC600__Device_Control_Blu-ray_Blu-ray DPad.ced
 ;Cedver is the version of the Smart Graphics control, not the CED file format.
 ;If the control definition changes, increment this.
 CedVer=1
@@ -92,13 +92,13 @@ CedVer=1
 ;================================================================================
 [
 ObjTp=Symbol
-Name=TEC Lite FT-TSC600__Device_Control_IPTV_IPTV DPad FT-TS600.ced
-Hint=IPTV DPad FT-TS600 (Smart Object ID=51)
+Name=TEC Lite FT-TSC600__Device_Control_IPTV_IPTV DPad.ced
+Hint=IPTV DPad (Smart Object ID=43)
 Code=2
 SGControlType=DPad
-SGControlName=IPTV DPad FT-TS600
-GUID=6FD6C407-C4EA-4019-A343-67AB6E259104
-SmplCName=TEC Lite FT-TSC600__Device_Control_IPTV_IPTV DPad FT-TS600.ced
+SGControlName=IPTV DPad
+GUID=9637212F-3605-4169-B9FC-01247F1520D5
+SmplCName=TEC Lite FT-TSC600__Device_Control_IPTV_IPTV DPad.ced
 SMWRev=4.02.19
 Expand=expand_random
 HelpID=10015
@@ -142,7 +142,7 @@ ParamSigType1=Constant
 MPp=1
 Pp1=2
 CedH=2
-SmartObjId=51d
+SmartObjId=43d
 ]
 ; Parameter Properties for Smart Object ID
 [
@@ -150,7 +150,7 @@ ObjTp=Dp
 H=2
 Tp=1
 HD=TRUE
-DV=51d
+DV=43d
 NF=1
 DNF=1
 EncFmt=0
@@ -161,7 +161,7 @@ Sgn=0
 [
 ObjTp=CED
 H=2
-Name=TEC Lite FT-TSC600__Device_Control_IPTV_IPTV DPad FT-TS600.ced
+Name=TEC Lite FT-TSC600__Device_Control_IPTV_IPTV DPad.ced
 ;Cedver is the version of the Smart Graphics control, not the CED file format.
 ;If the control definition changes, increment this.
 CedVer=1
@@ -169,13 +169,13 @@ CedVer=1
 ;================================================================================
 [
 ObjTp=Symbol
-Name=TEC Lite FT-TSC600__Device_Control_IPTV_IPTV Keypad FT-TS600.ced
-Hint=IPTV Keypad FT-TS600 (Smart Object ID=52)
+Name=TEC Lite FT-TSC600__Device_Control_IPTV_IPTV Keypad.ced
+Hint=IPTV Keypad (Smart Object ID=42)
 Code=3
 SGControlType=Simple Keypad
-SGControlName=IPTV Keypad FT-TS600
-GUID=13C305F2-E58C-4938-8491-6F3C25EFF606
-SmplCName=TEC Lite FT-TSC600__Device_Control_IPTV_IPTV Keypad FT-TS600.ced
+SGControlName=IPTV Keypad
+GUID=DC79B49E-3A3A-4850-B084-56EEA88BA09E
+SmplCName=TEC Lite FT-TSC600__Device_Control_IPTV_IPTV Keypad.ced
 SMWRev=4.02.19
 Expand=expand_random
 HelpID=10061
@@ -247,7 +247,7 @@ ParamSigType1=Constant
 MPp=1
 Pp1=3
 CedH=3
-SmartObjId=52d
+SmartObjId=42d
 ]
 ; Parameter Properties for Smart Object ID
 [
@@ -255,7 +255,7 @@ ObjTp=Dp
 H=3
 Tp=1
 HD=TRUE
-DV=52d
+DV=42d
 NF=1
 DNF=1
 EncFmt=0
@@ -266,7 +266,7 @@ Sgn=0
 [
 ObjTp=CED
 H=3
-Name=TEC Lite FT-TSC600__Device_Control_IPTV_IPTV Keypad FT-TS600.ced
+Name=TEC Lite FT-TSC600__Device_Control_IPTV_IPTV Keypad.ced
 ;Cedver is the version of the Smart Graphics control, not the CED file format.
 ;If the control definition changes, increment this.
 CedVer=1

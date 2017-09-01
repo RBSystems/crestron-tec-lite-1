@@ -4,23 +4,23 @@ Sgntr=SGD
 RelVrs=3
 VTProeVer=6.1.05
 Schema=1
-CRCGUID=33B2FFDC-9B11-42ED-81E9-39E0E358785B
+CRCGUID=AFCAD375-7827-497D-84DE-BC44F8014FAA
 ]
 ;================================================================================
 [
 ObjTp=Hd
 ProjectFile=TEC Lite TSW-760.vtp
-VtpGuid=5B9E7259-F804-49F6-9F65-BDA6B3A3EA1D
+VtpGuid=9C42A77D-9885-44E8-93B5-8B0235A0DB7C
 ]
 ;================================================================================
 [
 ObjTp=Symbol
 Name=TEC Lite TSW-760__Device_Control_Blu-ray_Blu-ray DPad.ced
-Hint=Blu-ray DPad (Smart Object ID=61)
+Hint=Blu-ray DPad (Smart Object ID=41)
 Code=1
 SGControlType=DPad
 SGControlName=Blu-ray DPad
-GUID=F7949CC3-4F92-4DD3-B1E7-693D66065A37
+GUID=A25FB43F-6C6B-4F12-93F3-1FFF943E1D30
 SmplCName=TEC Lite TSW-760__Device_Control_Blu-ray_Blu-ray DPad.ced
 SMWRev=4.02.19
 Expand=expand_random
@@ -65,7 +65,7 @@ ParamSigType1=Constant
 MPp=1
 Pp1=1
 CedH=1
-SmartObjId=61d
+SmartObjId=41d
 ]
 ; Parameter Properties for Smart Object ID
 [
@@ -73,7 +73,7 @@ ObjTp=Dp
 H=1
 Tp=1
 HD=TRUE
-DV=61d
+DV=41d
 NF=1
 DNF=1
 EncFmt=0
@@ -93,11 +93,11 @@ CedVer=1
 [
 ObjTp=Symbol
 Name=TEC Lite TSW-760__Device_Control_IPTV_IPTV DPad.ced
-Hint=IPTV DPad (Smart Object ID=63)
+Hint=IPTV DPad (Smart Object ID=43)
 Code=2
 SGControlType=DPad
 SGControlName=IPTV DPad
-GUID=BCA06B25-7ECE-4483-BAB2-980E82233AE0
+GUID=103C4991-C68E-4878-89A2-33FBDD6D228A
 SmplCName=TEC Lite TSW-760__Device_Control_IPTV_IPTV DPad.ced
 SMWRev=4.02.19
 Expand=expand_random
@@ -142,7 +142,7 @@ ParamSigType1=Constant
 MPp=1
 Pp1=2
 CedH=2
-SmartObjId=63d
+SmartObjId=43d
 ]
 ; Parameter Properties for Smart Object ID
 [
@@ -150,7 +150,7 @@ ObjTp=Dp
 H=2
 Tp=1
 HD=TRUE
-DV=63d
+DV=43d
 NF=1
 DNF=1
 EncFmt=0
@@ -170,11 +170,11 @@ CedVer=1
 [
 ObjTp=Symbol
 Name=TEC Lite TSW-760__Device_Control_IPTV_IPTV Keypad.ced
-Hint=IPTV Keypad (Smart Object ID=62)
+Hint=IPTV Keypad (Smart Object ID=42)
 Code=3
 SGControlType=Simple Keypad
 SGControlName=IPTV Keypad
-GUID=9FD2A55B-AFA4-4694-9E18-E95DD4437989
+GUID=620E21FD-68EC-4FCA-B6F7-C1E045E3EB32
 SmplCName=TEC Lite TSW-760__Device_Control_IPTV_IPTV Keypad.ced
 SMWRev=4.02.19
 Expand=expand_random
@@ -247,7 +247,7 @@ ParamSigType1=Constant
 MPp=1
 Pp1=3
 CedH=3
-SmartObjId=62d
+SmartObjId=42d
 ]
 ; Parameter Properties for Smart Object ID
 [
@@ -255,7 +255,7 @@ ObjTp=Dp
 H=3
 Tp=1
 HD=TRUE
-DV=62d
+DV=42d
 NF=1
 DNF=1
 EncFmt=0
