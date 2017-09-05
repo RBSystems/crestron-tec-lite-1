@@ -19,13 +19,13 @@ S1Nd=2
 SLNd=3
 PrNm=TEC Lite RMC3.smw
 CmVr=3.03
-DbVr=63.06.002.00
+DbVr=63.07.003.00
 DvcDbVr=86.05.003.00
 OpVr=User Canceled
 PgmNm=Brad Streeter, Dan Clegg, David Allred
 DlrNm=BYU
 CltNm=TEC Lite - RMC3
-JpNo=4.7.0
+JpNo=4.8.0
 SmVr=1038
 DvVr=1038
 TpN1=1
@@ -38,7 +38,7 @@ FltTmp=1
 FpCS=0
 EnType=0
 ZeroOnIoOk=0
-PIT=TEC_Lite_4_7_0
+PIT=TEC_Lite_4_8_0
 SGMethod=1
 ]
 [
@@ -2103,7 +2103,8 @@ Xm=-1
 Ym=-1
 SH=427
 Z=100
-Ht=4
+Ht=1
+Hi=1
 ]
 [
 ObjTp=Bw
