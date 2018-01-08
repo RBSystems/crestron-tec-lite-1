@@ -13,7 +13,7 @@ Hint=Blu-ray DPad (Smart Object ID=41)
 Code=1
 SGControlType=DPad
 SGControlName=Blu-ray DPad
-GUID=69FDD5F6-E44C-405A-BA03-EE37D7BFD009
+GUID=3E4C5738-7B62-4839-9E02-460C4EEE02DB
 SmplCName=TEC Lite FT-TSC600__Device_Control_Blu-ray_Blu-ray DPad.ced
 SMWRev=4.02.19
 Expand=expand_random
