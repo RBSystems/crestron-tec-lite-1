@@ -670,6 +670,7 @@ RELEASE di_6 {
 
 Function Init() {
     val = 0;
+	reeval(val);
     modeInvalid = 1;
 	blank_spot1 = 1;
 }
